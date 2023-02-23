@@ -35,11 +35,11 @@ ggplot(data = data) +     # dataデータでキャンバス準備
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #単回帰式を作るよ
-reg_data <- data %>% 
+reg_data <- data |> 
   lm(formula = incidence ~ size) 
 
 #単回帰の票を書くよ
-reg_data %>% 
+reg_data |> 
   tbl_regression(intercept = TRUE,
                  pvalue_fun = function(reg_data) style_pvalue(reg_data, digits = 2),
                  estimate_fun = function(reg_data) style_ratio(reg_data, digits = 3)) %>% 
@@ -59,3 +59,4 @@ summary(multireg_data)
 #調査時期を考慮したマルチレベル分析をするよ
 fitm1 <- lmer(incidence ~ size + (size|period),data = data)
 summary(fitm1)
+
