@@ -36,7 +36,7 @@ ggplot(data = data) +     # dataデータでキャンバス準備
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #単回帰式を作るよ
-reg_data <- data %>% 
+reg_data <- data |> 
   lm(formula = X ~ Y) 
 
 #単回帰の票を書くよ
