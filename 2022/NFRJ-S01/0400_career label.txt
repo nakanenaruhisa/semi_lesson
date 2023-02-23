@@ -1,0 +1,3999 @@
+            List of variables on the working file
+
+Name                                                                   Position
+
+NO        サンプル番号                                                        1
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F4
+          Write Format: F4
+
+FMAR_A    初婚年齢（合成変数）                                                2
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 98, 99
+
+          Value    Label
+
+             98 M  非該当
+             99 M  無回答
+
+FMAR_S    初婚西暦年（合成変数）                                              3
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F4
+          Write Format: F4
+          Missing Values: 9998, 9999
+
+          Value    Label
+
+           9998 M  非該当
+           9999 M  無回答
+
+FMAR_C05  初婚コーホート（５年階級）                                          4
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 98
+
+          Value    Label
+
+              1    １９３５〜１９３９年
+              2    １９４０〜１９４４年
+              3    １９４５〜１９４９年
+              4    １９５０〜１９５４年
+              5    １９５５〜１９５９年
+              6    １９６０〜１９６４年
+              7    １９６５〜１９６９年
+              8    １９７０〜１９７４年
+              9    １９７５〜１９７９年
+
+
+
+             10    １９８０〜１９８４年
+             11    １９８５〜１９８９年
+             12    １９９０〜１９９４年
+             13    １９９５〜２００１年
+             98 M  非該当
+             99    　無回答
+
+FMAR_C10  初婚コーホート（１０年階級）                                        5
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 98
+
+          Value    Label
+
+              1    １９３０〜１９３９年
+              2    １９４０〜１９４９年
+              3    １９５０〜１９５９年
+              4    １９６０〜１９６９年
+              5    １９７０〜１９７９年
+              6    １９８０〜１９８９年
+              7    １９９０〜１９９９年
+              8    ２０００〜２００１年
+             98 M  非該当
+             99    無回答
+
+DIV_EX    離婚経験の有無（離死別両方ありの場合，離婚先行ならば１，離婚        6
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DIV_A     離婚年齢（合成変数；初婚の離婚のみ）                                7
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 996 thru 999
+
+          Value    Label
+
+            996 M  非該当（再婚の離婚）
+            997 M  非該当（離婚なし）
+            998 M  非該当（未婚）
+            999 M  無回答
+
+DIV_S     離婚西暦年（合成変数；初婚の離婚のみ）                              8
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F4
+          Write Format: F4
+          Missing Values: 9996 thru 9999
+
+          Value    Label
+
+           9996 M  非該当（再婚の離婚）
+           9997 M  非該当（離婚なし）
+           9998 M  非該当（未婚）
+           9999 M  無回答
+
+DOKY_NOW  現在の親との同居（同居歴データにもとづく）                          9
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+
+          Value    Label
+
+              1    自分の親と同居
+              2    配偶者の親と同居
+              3    親とは同居していない
+              9    不明
+
+
+
+
+
+DOKY_R    自分の親との同居→別居パターン                                     10
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              1    結婚同居→継続
+              2    結婚同居→別居
+              3    途中同居→継続
+              4    途中同居→別居
+              7    同居経験なし
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_RFM  自分の親と初婚と同時に同居したか否か                               11
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              0    しない
+              1    初婚と同時に同居した
+              8 M  非該当
+              9    無回答
+
+KNKY_R    自分の親との近居→遠居・同居パターン                               12
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              1    結婚近居→継続
+              2    結婚近居→遠居・同居
+              3    途中近居→継続
+              4    途中近居→遠居・同居
+              7    近居経験なし
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+KNKY_RFM  自分の親と初婚と同時に近居したか否か                               13
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              0    しない
+              1    初婚と同時に近居した
+              8 M  非該当
+              9    無回答
+
+DOKY_R00  ＊　結婚 0年（当年）の同居：自分の親                               14
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R01  ＊　結婚 1年の同居：自分の親                                       15
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R02  ＊　結婚 2年の同居：自分の親                                       16
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R03  ＊　結婚 3年の同居：自分の親                                       17
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R04  ＊　結婚 4年の同居：自分の親                                       18
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R05  ＊　結婚 5年の同居：自分の親                                       19
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R06  ＊　結婚 6年の同居：自分の親                                       20
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R07  ＊　結婚 7年の同居：自分の親                                       21
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R08  ＊　結婚 8年の同居：自分の親                                       22
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R09  ＊　結婚 9年の同居：自分の親                                       23
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R10  ＊　結婚 10年の同居：自分の親                                      24
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R11  ＊　結婚 11年の同居：自分の親                                      25
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R12  ＊　結婚 12年の同居：自分の親                                      26
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R13  ＊　結婚 13年の同居：自分の親                                      27
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R14  ＊　結婚 14年の同居：自分の親                                      28
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R15  ＊　結婚 15年の同居：自分の親                                      29
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R16  ＊　結婚 16年の同居：自分の親                                      30
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R17  ＊　結婚 17年の同居：自分の親                                      31
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R18  ＊　結婚 18年の同居：自分の親                                      32
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R19  ＊　結婚 19年の同居：自分の親                                      33
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R20  ＊　結婚 20年の同居：自分の親                                      34
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R21  ＊　結婚 21年の同居：自分の親                                      35
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R22  ＊　結婚 22年の同居：自分の親                                      36
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R23  ＊　結婚 23年の同居：自分の親                                      37
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R24  ＊　結婚 24年の同居：自分の親                                      38
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R25  ＊　結婚 25年の同居：自分の親                                      39
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R26  ＊　結婚 26年の同居：自分の親                                      40
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R27  ＊　結婚 27年の同居：自分の親                                      41
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R28  ＊　結婚 28年の同居：自分の親                                      42
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_R29  ＊　結婚 29年の同居：自分の親                                      43
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_R30  ＊　結婚 30年の同居：自分の親                                      44
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S    配偶者の親との同居→別居パターン                                   45
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              1    結婚同居→継続
+              2    結婚同居→別居
+              3    途中同居→継続
+              4    途中同居→別居
+              7    同居経験なし
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_SFM  配偶者の親と初婚と同時に同居したか否か                             46
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              0    しない
+              1    初婚と同時に同居した
+              8 M  非該当
+              9    無回答
+
+KNKY_S    配偶者の親との近居→遠居・同居パターン                             47
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              1    結婚近居→継続
+              2    結婚近居→遠居・同居
+              3    途中近居→継続
+              4    途中近居→遠居・同居
+              7    近居経験なし
+              8 M  非該当（未婚）
+              9    無回答
+
+KNKY_SFM  配偶者の親と初婚と同時に近居したか否か                             48
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F1
+          Write Format: F1
+          Missing Values: 8
+
+          Value    Label
+
+              0    しない
+              1    初婚と同時に近居した
+              8 M  非該当
+              9    無回答
+
+
+
+
+
+DOKY_S00  ＊　結婚 0年（当年）の同居：配偶者の親                             49
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S01  ＊　結婚 1年の同居：配偶者の親                                     50
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S02  ＊　結婚 2年の同居：配偶者の親                                     51
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S03  ＊　結婚 3年の同居：配偶者の親                                     52
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S04  ＊　結婚 4年の同居：配偶者の親                                     53
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S05  ＊　結婚 5年の同居：配偶者の親                                     54
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S06  ＊　結婚 6年の同居：配偶者の親                                     55
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S07  ＊　結婚 7年の同居：配偶者の親                                     56
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S08  ＊　結婚 8年の同居：配偶者の親                                     57
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S09  ＊　結婚 9年の同居：配偶者の親                                     58
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S10  ＊　結婚 10年の同居：配偶者の親                                    59
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S11  ＊　結婚 11年の同居：配偶者の親                                    60
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S12  ＊　結婚 12年の同居：配偶者の親                                    61
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S13  ＊　結婚 13年の同居：配偶者の親                                    62
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S14  ＊　結婚 14年の同居：配偶者の親                                    63
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S15  ＊　結婚 15年の同居：配偶者の親                                    64
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S16  ＊　結婚 16年の同居：配偶者の親                                    65
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S17  ＊　結婚 17年の同居：配偶者の親                                    66
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S18  ＊　結婚 18年の同居：配偶者の親                                    67
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S19  ＊　結婚 19年の同居：配偶者の親                                    68
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S20  ＊　結婚 20年の同居：配偶者の親                                    69
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S21  ＊　結婚 21年の同居：配偶者の親                                    70
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S22  ＊　結婚 22年の同居：配偶者の親                                    71
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S23  ＊　結婚 23年の同居：配偶者の親                                    72
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S24  ＊　結婚 24年の同居：配偶者の親                                    73
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S25  ＊　結婚 25年の同居：配偶者の親                                    74
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S26  ＊　結婚 26年の同居：配偶者の親                                    75
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S27  ＊　結婚 27年の同居：配偶者の親                                    76
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S28  ＊　結婚 28年の同居：配偶者の親                                    77
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+DOKY_S29  ＊　結婚 29年の同居：配偶者の親                                    78
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+
+
+
+
+DOKY_S30  ＊　結婚 30年の同居：配偶者の親                                    79
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F3
+          Write Format: F3
+          Missing Values: 7, 8
+
+          Value    Label
+
+              0    別居（死亡を含む）
+              1    同居（初婚）
+              2    同居（再婚）
+              7 M  非該当（調査時点打ち切り）
+              8 M  非該当（未婚）
+              9    無回答
+
+HSHOLDC1  長子１歳時の世帯構成　６分類                                       80
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              1    単独世帯
+              3    その他の親族世帯
+              4    非親族世帯
+              8 M  非該当
+              9    無回答
+             21    核家族世帯（夫婦のみ）
+             22    核家族世帯（夫婦と子ども）
+             23    核家族世帯（ひとり親と子ども）
+            221    核家族世帯（夫婦［義親］と子ども）
+            231    核家族世帯（ひとり親［義親］と子ども）
+
+
+
+
+
+HSHOLDC2  長子１歳時の世帯構成　４分類                                       81
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              1    単独世帯
+              2    核家族世帯
+              3    その他の親族世帯
+              4    非親族世帯
+              8 M  非該当
+              9    無回答
+
+HSHOLDN1  現在（調査時点）の世帯構成　６分類                                 82
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+
+          Value    Label
+
+              1    単独世帯
+              3    その他の親族世帯
+              4    非親族世帯
+             21    核家族世帯（夫婦のみ）
+             22    核家族世帯（夫婦と子ども）
+             23    核家族世帯（ひとり親と子ども）
+            221    核家族世帯（夫婦［義親］と子ども）
+            231    核家族世帯（ひとり親［義親］と子ども）
+
+HSHOLDN2  現在（調査時点）の世帯構成　４分類                                 83
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+
+          Value    Label
+
+              1    単独世帯
+              2    核家族世帯
+              3    その他の親族世帯
+              4    非親族世帯
+
+
+
+
+
+JOBAG10   ＊　10 歳時の仕事                                                  84
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG11   ＊　11 歳時の仕事                                                  85
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG12   ＊　12 歳時の仕事                                                  86
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG13   ＊　13 歳時の仕事                                                  87
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG14   ＊　14 歳時の仕事                                                  88
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG15   ＊　15 歳時の仕事                                                  89
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG16   ＊　16 歳時の仕事                                                  90
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG17   ＊　17 歳時の仕事                                                  91
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG18   ＊　18 歳時の仕事                                                  92
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG19   ＊　19 歳時の仕事                                                  93
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG20   ＊　20 歳時の仕事                                                  94
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG21   ＊　21 歳時の仕事                                                  95
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG22   ＊　22 歳時の仕事                                                  96
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG23   ＊　23 歳時の仕事                                                  97
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG24   ＊　24 歳時の仕事                                                  98
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG25   ＊　25 歳時の仕事                                                  99
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG26   ＊　26 歳時の仕事                                                 100
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG27   ＊　27 歳時の仕事                                                 101
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG28   ＊　28 歳時の仕事                                                 102
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG29   ＊　29 歳時の仕事                                                 103
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG30   ＊　30 歳時の仕事                                                 104
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG31   ＊　31 歳時の仕事                                                 105
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG32   ＊　32 歳時の仕事                                                 106
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG33   ＊　33 歳時の仕事                                                 107
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG34   ＊　34 歳時の仕事                                                 108
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG35   ＊　35 歳時の仕事                                                 109
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG36   ＊　36 歳時の仕事                                                 110
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG37   ＊　37 歳時の仕事                                                 111
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG38   ＊　38 歳時の仕事                                                 112
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG39   ＊　39 歳時の仕事                                                 113
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG40   ＊　40 歳時の仕事                                                 114
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG41   ＊　41 歳時の仕事                                                 115
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG42   ＊　42 歳時の仕事                                                 116
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG43   ＊　43 歳時の仕事                                                 117
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG44   ＊　44 歳時の仕事                                                 118
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG45   ＊　45 歳時の仕事                                                 119
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG46   ＊　46 歳時の仕事                                                 120
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG47   ＊　47 歳時の仕事                                                 121
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG48   ＊　48 歳時の仕事                                                 122
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG49   ＊　49 歳時の仕事                                                 123
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG50   ＊　50 歳時の仕事                                                 124
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG51   ＊　51 歳時の仕事                                                 125
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG52   ＊　52 歳時の仕事                                                 126
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG53   ＊　53 歳時の仕事                                                 127
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG54   ＊　54 歳時の仕事                                                 128
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG55   ＊　55 歳時の仕事                                                 129
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG56   ＊　56 歳時の仕事                                                 130
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG57   ＊　57 歳時の仕事                                                 131
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG58   ＊　58 歳時の仕事                                                 132
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG59   ＊　59 歳時の仕事                                                 133
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG60   ＊　60 歳時の仕事                                                 134
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG61   ＊　61 歳時の仕事                                                 135
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG62   ＊　62 歳時の仕事                                                 136
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG63   ＊　63 歳時の仕事                                                 137
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG64   ＊　64 歳時の仕事                                                 138
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG65   ＊　65 歳時の仕事                                                 139
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG66   ＊　66 歳時の仕事                                                 140
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG67   ＊　67 歳時の仕事                                                 141
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG68   ＊　68 歳時の仕事                                                 142
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG69   ＊　69 歳時の仕事                                                 143
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG70   ＊　70 歳時の仕事                                                 144
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG71   ＊　71 歳時の仕事                                                 145
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG72   ＊　72 歳時の仕事                                                 146
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG73   ＊　73 歳時の仕事                                                 147
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG74   ＊　74 歳時の仕事                                                 148
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG75   ＊　75 歳時の仕事                                                 149
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+JOBAG76   ＊　76 歳時の仕事                                                 150
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+JOBAG77   ＊　77 歳時の仕事                                                 151
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F2
+          Write Format: F2
+          Missing Values: 88, 99
+
+          Value    Label
+
+              0    仕事についていない
+              1    正社員（正職員、役員を含む）
+              2    自営（家族従業員を含む）
+              3    パート（アルバイト、派遣、内職を含む）
+             12    正社員＋自営
+             13    正社員＋パート
+             23    自営＋パート
+             77    就業（仕事内容不明）
+             88 M  非該当（年齢による観察打ち切り）
+             99 M  無効（時点情報不備）
+
+
+
+
+
+CAREAG12  ＊　12 歳時の介護・看護                                           152
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG13  ＊　13 歳時の介護・看護                                           153
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG14  ＊　14 歳時の介護・看護                                           154
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG15  ＊　15 歳時の介護・看護                                           155
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG16  ＊　16 歳時の介護・看護                                           156
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG17  ＊　17 歳時の介護・看護                                           157
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG18  ＊　18 歳時の介護・看護                                           158
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG19  ＊　19 歳時の介護・看護                                           159
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG20  ＊　20 歳時の介護・看護                                           160
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG21  ＊　21 歳時の介護・看護                                           161
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG22  ＊　22 歳時の介護・看護                                           162
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG23  ＊　23 歳時の介護・看護                                           163
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG24  ＊　24 歳時の介護・看護                                           164
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG25  ＊　25 歳時の介護・看護                                           165
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG26  ＊　26 歳時の介護・看護                                           166
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG27  ＊　27 歳時の介護・看護                                           167
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG28  ＊　28 歳時の介護・看護                                           168
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG29  ＊　29 歳時の介護・看護                                           169
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG30  ＊　30 歳時の介護・看護                                           170
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG31  ＊　31 歳時の介護・看護                                           171
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG32  ＊　32 歳時の介護・看護                                           172
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG33  ＊　33 歳時の介護・看護                                           173
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG34  ＊　34 歳時の介護・看護                                           174
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG35  ＊　35 歳時の介護・看護                                           175
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG36  ＊　36 歳時の介護・看護                                           176
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG37  ＊　37 歳時の介護・看護                                           177
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG38  ＊　38 歳時の介護・看護                                           178
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG39  ＊　39 歳時の介護・看護                                           179
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG40  ＊　40 歳時の介護・看護                                           180
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG41  ＊　41 歳時の介護・看護                                           181
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG42  ＊　42 歳時の介護・看護                                           182
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG43  ＊　43 歳時の介護・看護                                           183
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG44  ＊　44 歳時の介護・看護                                           184
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG45  ＊　45 歳時の介護・看護                                           185
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG46  ＊　46 歳時の介護・看護                                           186
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG47  ＊　47 歳時の介護・看護                                           187
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG48  ＊　48 歳時の介護・看護                                           188
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG49  ＊　49 歳時の介護・看護                                           189
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG50  ＊　50 歳時の介護・看護                                           190
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG51  ＊　51 歳時の介護・看護                                           191
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG52  ＊　52 歳時の介護・看護                                           192
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG53  ＊　53 歳時の介護・看護                                           193
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG54  ＊　54 歳時の介護・看護                                           194
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG55  ＊　55 歳時の介護・看護                                           195
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG56  ＊　56 歳時の介護・看護                                           196
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG57  ＊　57 歳時の介護・看護                                           197
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG58  ＊　58 歳時の介護・看護                                           198
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG59  ＊　59 歳時の介護・看護                                           199
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG60  ＊　60 歳時の介護・看護                                           200
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG61  ＊　61 歳時の介護・看護                                           201
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG62  ＊　62 歳時の介護・看護                                           202
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG63  ＊　63 歳時の介護・看護                                           203
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG64  ＊　64 歳時の介護・看護                                           204
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG65  ＊　65 歳時の介護・看護                                           205
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG66  ＊　66 歳時の介護・看護                                           206
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG67  ＊　67 歳時の介護・看護                                           207
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG68  ＊　68 歳時の介護・看護                                           208
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG69  ＊　69 歳時の介護・看護                                           209
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG70  ＊　70 歳時の介護・看護                                           210
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG71  ＊　71 歳時の介護・看護                                           211
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG72  ＊　72 歳時の介護・看護                                           212
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG73  ＊　73 歳時の介護・看護                                           213
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG74  ＊　74 歳時の介護・看護                                           214
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG75  ＊　75 歳時の介護・看護                                           215
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG76  ＊　76 歳時の介護・看護                                           216
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG77  ＊　77 歳時の介護・看護                                           217
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG78  ＊　78 歳時の介護・看護                                           218
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG79  ＊　79 歳時の介護・看護                                           219
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+CAREAG80  ＊　80 歳時の介護・看護                                           220
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
+CAREAG81  ＊　81 歳時の介護・看護                                           221
+          Measurement Level: Scale
+          Column Width: 8  Alignment: Right
+          Print Format: F8
+          Write Format: F8
+          Missing Values: 8
+
+          Value    Label
+
+              0    なし
+              1    あり
+              8 M  非該当（年齢による観察打ち切り）
+              9    無回答
+
+
+
+
+
