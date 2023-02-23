@@ -1,6 +1,7 @@
 #Rを使う下準備
 #全部の変数を消す
 rm(list=ls())
+
 #packageの準備
 library(tidyverse)
 library(ggplot2)
@@ -139,6 +140,9 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
+#男女の平均身長に有意差はある？
+t.test(height,sex,var.equal = T)
+
 #男性と女性の身長の平均の比較をseエラーバーをつけて書く（ggplot）
 ggplot(data = ten_kukan20)+
   aes(x = sex_c, y = height, color = sex_c)+
@@ -149,3 +153,29 @@ ggplot(data = ten_kukan20)+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
+#男性と女性の身長の雨雲図を書いて比較してみて
+
+library(ggdist)
+library(tidyquant)
+
+ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
+  aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
+  ggdist::stat_halfeye(
+    adjust =0.5,
+    justification = -.2,
+    .width = 0,
+    point_colour = NA)+
+  # はこひげ図を描く
+  geom_boxplot(
+    width = 0.12,
+    outlier.color = NA,
+    alpha = 0.5) +
+  ggdist::stat_dots(
+    side = "left",
+    justification = 1.1,
+    binwidth = 0.25)+
+  xlab("sex") + ylab("height") +
+  scale_fill_tq()+
+  theme_tq()+
+  theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
+  coord_flip()

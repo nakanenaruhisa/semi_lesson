@@ -22,19 +22,21 @@ theme_set(theme_gray(
 rm(list=ls())
 
 #datasetを読み込む
+ten_kukan100 <- read_csv("height/testdataset.csv")
 
 
+
+ten_kukan100 <-ten_kukan100 %>%
+  mutate(sex_c =
+           case_when(sex == "Male" ~ "男性",
+                     sex == "Female" ~ "女性",
+                     TRUE ~ sex)) 
 #変数を箱に入れるよ
 height <- (ten_kukan100$height)
 weight <- (ten_kukan100$weight)
-sex <- (ten_kukan100$sex)
-
-#性別をカテゴリ変数に変換
-ten_kukan100 <- ten_kukan100 %>% 
-  mutate(sex_c = factor(sex,levels = 1:2,labels = c("女性","男性")))
-#性別がカテゴリ変数に変換できていることを確認
-ten_kukan100 %>% with(table(sex_c))
 sex_c <- (ten_kukan100$sex_c)
+
+view(ten_kukan100)
 
 #身長の平均値を出してみて
 mean(height)
@@ -121,6 +123,7 @@ ggplot(data = ten_kukan100) +     # tenkukan100データでキャンバス準備
   aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
   geom_boxplot() +                  # はこひげ図を描く
   xlab("sex") + ylab("height") +
+  coord_flip()+ 
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
@@ -132,5 +135,34 @@ ggplot(data = ten_kukan100)+
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0.1, lwd = 1)+
   xlab("sex") + ylab("height") +
   scale_colour_tableau()+
+  coord_flip()+ 
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+
+#男性と女性の身長の雨雲図を書いて比較してみて
+
+library(ggdist)
+library(tidyquant)
+
+ggplot(data = ten_kukan100) +     # tenkukan20データでキャンバス準備
+  aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
+  ggdist::stat_halfeye(
+    adjust =0.5,
+    justification = -.2,
+    .width = 0,
+    point_colour = NA)+
+  # はこひげ図を描く
+  geom_boxplot(
+    width = 0.12,
+    outlier.color = NA,
+    alpha = 0.5) +
+  ggdist::stat_dots(
+    side = "left",
+    justification = 1.1,
+    binwidth = 0.25)+
+  xlab("sex") + ylab("height") +
+  scale_fill_tq()+
+  theme_tq()+
+  theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
+  coord_flip()
+
