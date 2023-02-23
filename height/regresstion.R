@@ -21,21 +21,16 @@ theme_set(theme_gray(
 rm(list=ls())
 
 #datasetを読み込む
-ten_kukan100 <- read_csv("height_weight/ten_kukan100.csv")
+ten_kukan100  <- read_csv("OneDrive/R/semi_lesson/height/testdataset.csv")
 
+ten_kukan100 <-ten_kukan100 %>%
+  mutate(sex_c =
+           case_when(sex == "Male" ~ "男性",
+                     sex == "Female" ~ "女性",
+                     TRUE ~ sex)) 
 #変数を箱に入れるよ
 height <- (ten_kukan100$height)
 weight <- (ten_kukan100$weight)
-sex <- (ten_kukan100$sex)
-
-#性別をカテゴリ変数に変換
-ten_kukan100 <- ten_kukan100 %>% 
-  mutate(sex_c = factor(sex,
-                        levels = 1:2,
-                        labels = c("女性","男性")))
-
-#性別がカテゴリ変数に変換できていることを確認
-ten_kukan100 %>% with(table(sex_c))
 sex_c <- (ten_kukan100$sex_c)
 
 #身長と体重の関係の回帰式を書くよ
