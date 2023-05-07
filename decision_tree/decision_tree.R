@@ -9,6 +9,9 @@ library(ggthemes)
 library(gtsummary)
 library(rpart)
 
+#フォルダの固定
+here::here()
+
 #全部の変数を消す
 rm(list=ls())
 

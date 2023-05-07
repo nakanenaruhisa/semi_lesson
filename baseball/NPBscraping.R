@@ -2,6 +2,6 @@ install.packages("rvest")
 library("rvest")
 library(tidyverse)
 
-html <- read_html("https://npb.jp/bis/2022/stats/bat_c.html")
+sbatch2022 <- read_html("https://baseballdata.jp/ctop.html")
 
 view(html)

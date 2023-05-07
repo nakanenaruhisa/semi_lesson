@@ -11,32 +11,34 @@ library(gtsummary)
 install.packages("ggforce")
 library(ggforce)
 
-
 #全部の変数を消す
 rm(list=ls())
 
-#大数の法則
-set.seed(19761130) # 乱数のseedを指定
+#フォルダの固定
+here::here()
 
-X1 <- rnorm(5, 0, 100) # N(0, 100)から乱数を5個抽出する
+#大数の法則
+set.seed(20000000) # 乱数のseedを指定
+
+X1 <- rnorm(5, 50, 10) # N(平均50、標準偏差10)から乱数を5個抽出する
 print(X1) # 抽出された乱数を出力する
 
 mean(X1)
 
-X2 <- rnorm(100, 0, 100) # N(0, 100)から乱数を100個抽出する
+X2 <- rnorm(100, 50, 10) # N(平均50、標準偏差10)から乱数を100個抽出する
 print(X2) # 抽出された乱数を出力する
 
 mean(X2)
 
-X3 <- rnorm(10000, 0, 100) # N(0, 100)から乱数を1万個抽出する
+X3 <- rnorm(10000, 50, 10) # N(平均50、標準偏差10)から乱数を10000個抽出する
 mean(X3) # 抽出された乱数の平均値を出力する
 
-X4 <- rnorm(20000929, 0, 100) # N(0, 100)から乱数を1万個抽出する
+X4 <- rnorm(20000929,  50, 10) # N(-100, 100)から乱数を1万個抽出する
 mean(X4) # 抽出された乱数の平均値を出力する
 
 X_bar_vec <- rep(NA, 1000)     # 長さ1000の空ベクトルを作成
 for (i in 1:1000) {            # iを1から1000へ増やしながら反復
-  temp_vec <- rnorm(i, 0, 100) # N(0, 100)からi個の乱数を抽出し、temp_vecに格納
+  temp_vec <- rnorm(i, 0, 10) # N(0, 100)からi個の乱数を抽出し、temp_vecに格納
   # temp_vecの平均値をX_bar_vecのi番目要素として格納
   X_bar_vec[i] <- mean(temp_vec)
 }
@@ -51,7 +53,7 @@ ggplot() +
   theme_test(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #モンテカルロ法
-set.seed(19861009)
+set.seed(20000000)
 pi_df <- tibble(x = runif(800, -1, 1),
                 y = runif(800, -1, 1))
 
@@ -81,6 +83,8 @@ pi_df %>%
 pi_df <- pi_df %>%
   mutate(in_circle = if_else(x^2 + y^2 < 1^2, "円内", "円外"))
 
+head(pi_df)
+
 #変数「円内」「円外」で色分け
 pi_df %>%
   ggplot() +
@@ -91,7 +95,8 @@ pi_df %>%
   geom_circle(aes(x0 = 0, y0 = 0, r = 1)) +
   labs(x = "X", y = "Y", color = "") +
   coord_fixed(ratio = 1) +
-  theme_void(base_size = 12)
+  theme_void(base_size = 12)+
+  theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #変数「円内」「円外」をカウント
 pi_df %>%
@@ -99,4 +104,6 @@ pi_df %>%
   summarise(N = n())
 
 #計算
-623 / 800 * 4
+#円の中に入った点の数打った点の総数 ≈ πr^2/(2r)^2=π/4
+
+637 / 800 * 4

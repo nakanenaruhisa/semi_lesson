@@ -8,6 +8,9 @@ library(dbplyr)
 library(ggthemes)
 library(gtsummary)
 
+#フォルダの固定
+here::here()
+
 #テーマのセット
 theme_set(theme_grey(base_family = "HiraginoSans-W3"))
 theme_set(theme_bw(
@@ -64,8 +67,12 @@ ggpairs(anscombe)
 anscombe %>% 
   ggplot(aes(x = x, y = y)) + 
   geom_point(shape = 0) + 
-  geom_smooth(method = "lm", se = FALSE) + 
-  facet_wrap(~dataset)
+  geom_smooth(method = "lm", se = TRUE) + 
+  facet_wrap(~dataset)+
+  scale_colour_tableau()+
+  theme_gray(base_size = 15) + #grayテーマで
+  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+
 
 #dataset1のxとyの回帰式を書くよ
 dataset1 <- anscombe %>% 

@@ -1,11 +1,25 @@
 #Rを使う下準備
+
+#大学のネットワークの場合
+options(RCurlOptions = list(proxy = "proxy.kpu.ac.jp:8080"))
+Sys.setenv("http_proxy"="http://proxy.kpu.ac.jp:8080")
+options(repos=local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.ism.ac.jp"; r }))
+
+
 #packageの準備
+install.packages("here")
+
 library(tidyverse)
+library(here)
 library(ggplot2)
 library(GGally)
 library(dbplyr)
 library(ggthemes)
 library(gtsummary)
+
+#フォルダの固定
+here::here()
+renv::init()
 
 #全部の変数を消す
 rm(list=ls())

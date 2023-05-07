@@ -137,7 +137,7 @@ ggplot(data = testdataset) +     # tenkukan20データでキャンバス準備
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #男女の平均身長に有意差はある？
-t.test(height,sex,var.equal = T)
+t.test(height,sex_c,var.equal = T)
 
 #男性と女性の身長の平均の比較をseエラーバーをつけて書く（ggplot）
 ggplot(data = testdataset)+
@@ -177,5 +177,29 @@ ggplot(data = testdataset) +     # tenkukan20データでキャンバス準備
   theme_tq()+
   coord_flip()+
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
-  
+
+#男性と女性の体重の雨雲図を書いて比較してみて
+ggplot(data = testdataset) +     # tenkukan20データでキャンバス準備
+  aes(x = sex_c, y = weight, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
+  ggdist::stat_halfeye(
+    adjust =0.25,
+    justification = -0.1,
+    .width = 0,
+    height = 1,
+    point_colour = NA)+
+  #geom_point(position = position_jitter(width = 0, height = 5, seed = 1))+
+  # はこひげ図を描く
+  geom_boxplot(
+    width = 0.12,
+    outlier.color = NA,
+    alpha = 0.5) +
+  ggdist::stat_dots(
+    side = "left",
+    justification = 1.1,
+    binwidth = 1)+
+  xlab("sex") + ylab("height") +
+  scale_fill_tq()+
+  theme_tq()+
+  coord_flip()+
+  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
