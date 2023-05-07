@@ -1,6 +1,10 @@
 Rを使う下準備
 #packageの準備
 install.packages("modelsummary")
+
+renv::init()
+
+#packageの準備
 library(tidyverse)
 library(ggplot2)
 library(GGally)
@@ -9,10 +13,14 @@ library(ggthemes)
 library(gtsummary)
 library(modelsummary)
 
+#フォルダの固定
+here::here()
+
+
 #全部の変数を消す
 rm(list=ls())
 
-stats_summary <- read_csv("stats_summary.csv")
+stats_summary <- read_csv("baseball/stats_summary.csv")
 
 data <- stats_summary
 
@@ -21,6 +29,17 @@ data <- data %>%
   mutate(team = チーム) %>%
   mutate(team = 
            if_else(team == "横浜", "DeNA", team))
+
+#チームイニシャルをチーム名に変換する
+data <- data %>%
+  mutate(team = 
+           case_when(team =="F" ~ "日本ハム",
+                     team =="H" ~ "ソフトバンク",
+                     team =="B" ~ "オリックス",
+                     team =="M" ~ "ロッテ",
+                     team =="L" ~ "西武",
+                     team =="E" ~ "楽天",
+                     TRUE ~ team)) 
 
 #OPSを作成する
 data <- data %>% 
@@ -33,6 +52,7 @@ data  %>%
 #規定打席数443に達した選手に絞り込み
 data <- data %>% 
   filter(打席数　>　443)
+
 
 view(data)
 head(data)
@@ -88,7 +108,7 @@ data %>%
 
 #ソフトバンクチームデータ
 softbank <- data %>% 
-  filter(チーム == "ソフトバンク") 
+  filter(team == "ソフトバンク") 
 view(softbank)
 
 #柳田と山田のデータ作成

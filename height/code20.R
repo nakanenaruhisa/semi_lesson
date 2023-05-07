@@ -9,6 +9,10 @@ library(dbplyr)
 library(GGally)
 library(ggthemes)
 library(gtsummary)
+library(summarytools)
+
+#フォルダの固定
+here::here()
 
 #テーマのセット
 theme_set(theme_grey(base_family = "HiraginoSans-W3"))
@@ -31,8 +35,11 @@ sex <- (ten_kukan20$sex)
 ten_kukan20 <- ten_kukan20 %>% 
   mutate(sex_c = factor(sex,levels = 1:2,labels = c("女性","男性")))
 
+<<<<<<< Updated upstream
 view(ten_kukan20)
 
+=======
+>>>>>>> Stashed changes
 
 #性別がカテゴリ変数に変換できていることを確認
 ten_kukan20 %>% with(table(sex_c))
@@ -79,6 +86,7 @@ femaleheightsd <- subset(height,sex_c == "女性")
 femaleheightsd <- sd(femaleheightsd)
 print(femaleheightsd)
 
+
 #データセット全体のテーブルを自動でつくる
 ten_kukan20 %>% 
   tbl_summary()
@@ -106,18 +114,6 @@ ten_kukan20 %>%
               digits = all_continuous() ~ 1) %>% #数値の部分が小数点第y位の部分の値
   modify_header(label ~ "男女別身長体重") # ""の部分には好きな文字列を入れられる。何も入れなければ空欄になる
 
-#せっかくだから男女別に書いてみる
-ten_kukan20 %>% 
-  select(height,weight,sex_c) %>% 
-  tbl_summary(label = list(sex_c ~ "性別",
-                           height ~ "身長",
-                           weight ~ "体重"), #~の前には列名、後ろにはつけたい名前を""で囲んで入れ、,で一つずつ区切る
-              statistic = list(all_continuous() ~ "{mean} ±{sd}"),
-              by = sex_c,
-              digits = all_continuous() ~ 1) %>%
-  add_n() %>% #数値の部分が小数点第y位の部分の値
-  modify_header(label ~ "男女別身長体重") # ""の部分には好きな文字列を入れられる。何も入れなければ空欄になる
-
 #身長と体重のプロット書いてみて
 ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   aes(x = height, y = weight)+ # height,weight列をx,y軸にmapping
@@ -142,7 +138,9 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #男女の平均身長に有意差はある？
+
 t.test(height,sex,var.equal = T)
+
 
 #男性と女性の身長の平均の比較をseエラーバーをつけて書く（ggplot）
 ggplot(data = ten_kukan20)+
@@ -156,8 +154,9 @@ ggplot(data = ten_kukan20)+
 
 #男性と女性の身長の雨雲図を書いて比較してみて
 
+install.packages("ggdist")
 library(ggdist)
-library(tidyquant)
+
 
 ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
@@ -178,8 +177,15 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
     justification = 1.1,
     binwidth = 0.25)+
   xlab("sex") + ylab("height") +
+<<<<<<< Updated upstream
   scale_fill_tq()+
   theme_tq()+
   coord_flip()+
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
+=======
+  #scale_fill_tq()+
+  #theme_tq()+
+  theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
+  coord_flip()
+>>>>>>> Stashed changes

@@ -24,5 +24,5 @@ p2 <-
           diag=list(continuous="barDiag"),
           # diagの連続×連続を積み上げヒストグラムに変更
           lower=list(continuous="smooth", combo = "facetdensity"))
-          # lowerの連続×連続を回帰線に，連続×離散を密度図に変更)
+# lowerの連続×連続を回帰線に，連続×離散を密度図に変更)
 p2
