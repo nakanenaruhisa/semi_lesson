@@ -5,8 +5,8 @@ rm(list=ls())
 #packageの準備
 library(tidyverse)
 library(ggplot2)
-library(GGally)
 library(dbplyr)
+library(GGally)
 library(ggthemes)
 library(gtsummary)
 
@@ -19,10 +19,8 @@ theme_set(theme_gray(
   base_rect_size = 0.2 #外枠の線の太さを設定。デフォルトはbase_size/22
 ))
 
-
-
 #datasetを読み込む
-ten_kukan20 <- read_csv("height_weight/ten_kukan20.csv")
+ten_kukan20 <- read_csv("height/ten_kukan20.csv")
 
 #変数を箱に入れるよ
 height <- (ten_kukan20$height)
@@ -32,6 +30,9 @@ sex <- (ten_kukan20$sex)
 #性別をカテゴリ変数に変換
 ten_kukan20 <- ten_kukan20 %>% 
   mutate(sex_c = factor(sex,levels = 1:2,labels = c("女性","男性")))
+
+view(ten_kukan20)
+
 
 #性別がカテゴリ変数に変換できていることを確認
 ten_kukan20 %>% with(table(sex_c))
@@ -82,6 +83,8 @@ print(femaleheightsd)
 ten_kukan20 %>% 
   tbl_summary()
 
+tbl_summary(ten_kukan20)
+
 #記述統計量にラベルを付けてテーブルで出力する
 ten_kukan20 %>% 
   select(height,weight,sex_c) %>% 
@@ -121,11 +124,9 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   geom_point() +                  # 散布図を描く
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
-  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  #theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
-#身長と体重の性別ごとのプロット書いてみて
-ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
-  aes(x = height, y = weight, colour = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
+ggplot(data = ten_kukan20, aes(x = height, y = weight, colour = sex_c)) + # ten_kukan20データでキャンバス準備
   geom_point() +                  # 散布図を描く
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
@@ -162,9 +163,11 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
   ggdist::stat_halfeye(
     adjust =0.5,
-    justification = -.2,
+    justification = -0.1,
     .width = 0,
+    height = 1,
     point_colour = NA)+
+  #geom_point(position = position_jitter(width = 0, height = 5, seed = 1))+
   # はこひげ図を描く
   geom_boxplot(
     width = 0.12,
@@ -177,5 +180,6 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   xlab("sex") + ylab("height") +
   scale_fill_tq()+
   theme_tq()+
-  theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
-  coord_flip()
+  coord_flip()+
+  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+

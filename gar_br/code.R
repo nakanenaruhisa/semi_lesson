@@ -40,9 +40,8 @@ gap <- gap_br_gdp$gap
 gdp <- gap_br_gdp$gdp
 br <- gap_br_gdp$birthrate
 
-#一�テーブルにしておく
-gap
-_r_gdp %>%
+#一?テーブルにしておく
+gap_r_gdp %>%
   tbselect(-year) %>%
   l_summary()
 
@@ -56,7 +55,7 @@ ggplot(data = gap_br_gdp)+
   scale_colour_tableau()+
   theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
-#gapとbr�で散布図を書く
+#gapとbr?で散布図を書く
 ggplot(data = gap_br_gdp)+
   aes( x= gdp, y = gap, label=year) +
   geom_point() +                  # 散布図を描く

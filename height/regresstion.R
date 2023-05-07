@@ -21,7 +21,7 @@ theme_set(theme_gray(
 rm(list=ls())
 
 #datasetを読み込む
-ten_kukan100  <- read_csv("OneDrive/R/semi_lesson/height/testdataset.csv")
+ten_kukan100  <- read_csv("height/testdataset.csv")
 
 ten_kukan100 <-ten_kukan100 %>%
   mutate(sex_c =
@@ -80,8 +80,22 @@ install.packages("coefplot")
 library(coefplot)
 coefplot(reg_male, intercept = FALSE)
 
-#ggplot
+
+#ggplot男性の回帰分析
 tidy(reg_male, conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  ggplot() +
+  geom_vline(xintercept = 0, color = "red") +
+  geom_pointrange(aes(x = estimate, xmin = conf.low, xmax = conf.high,
+                      y = term)) +
+  scale_colour_tableau()+
+  theme_gray(base_size = 12) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+#ggplot女性の回帰分析
+tidy(reg_female, conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
   ggplot() +
   geom_vline(xintercept = 0, color = "red") +
   geom_pointrange(aes(x = estimate, xmin = conf.low, xmax = conf.high,
