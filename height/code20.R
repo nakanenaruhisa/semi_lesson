@@ -35,11 +35,8 @@ sex <- (ten_kukan20$sex)
 ten_kukan20 <- ten_kukan20 %>% 
   mutate(sex_c = factor(sex,levels = 1:2,labels = c("女性","男性")))
 
-<<<<<<< Updated upstream
 view(ten_kukan20)
 
-=======
->>>>>>> Stashed changes
 
 #性別がカテゴリ変数に変換できていることを確認
 ten_kukan20 %>% with(table(sex_c))
@@ -120,10 +117,13 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   geom_point() +                  # 散布図を描く
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
-  #theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
+  
+  
+#せっかくだから男女別に色分けした書いてみる
 ggplot(data = ten_kukan20, aes(x = height, y = weight, colour = sex_c)) + # ten_kukan20データでキャンバス準備
-  geom_point() +                  # 散布図を描く
+  geom_point(size = 2) +                  # 散布図を描く
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
@@ -138,9 +138,7 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
 #男女の平均身長に有意差はある？
-
 t.test(height,sex,var.equal = T)
-
 
 #男性と女性の身長の平均の比較をseエラーバーをつけて書く（ggplot）
 ggplot(data = ten_kukan20)+
@@ -175,17 +173,7 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   ggdist::stat_dots(
     side = "left",
     justification = 1.1,
-    binwidth = 0.25)+
+    binwidth = 0.5)+
   xlab("sex") + ylab("height") +
-<<<<<<< Updated upstream
-  scale_fill_tq()+
-  theme_tq()+
   coord_flip()+
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
-
-=======
-  #scale_fill_tq()+
-  #theme_tq()+
-  theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
-  coord_flip()
->>>>>>> Stashed changes
