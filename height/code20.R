@@ -10,6 +10,9 @@ library(GGally)
 library(ggthemes)
 library(gtsummary)
 library(summarytools)
+install.packages("psych")
+library(psych)
+
 
 #フォルダの固定
 here::here()
@@ -35,11 +38,8 @@ sex <- (ten_kukan20$sex)
 ten_kukan20 <- ten_kukan20 %>% 
   mutate(sex_c = factor(sex,levels = 1:2,labels = c("女性","男性")))
 
-<<<<<<< Updated upstream
 view(ten_kukan20)
 
-=======
->>>>>>> Stashed changes
 
 #性別がカテゴリ変数に変換できていることを確認
 ten_kukan20 %>% with(table(sex_c))
@@ -86,11 +86,16 @@ femaleheightsd <- subset(height,sex_c == "女性")
 femaleheightsd <- sd(femaleheightsd)
 print(femaleheightsd)
 
+#めんどくさいデータは全部一気に出す
+summary(ten_kukan20)
+describe(ten_kukan20)
+
 
 #データセット全体のテーブルを自動でつくる
 ten_kukan20 %>% 
   tbl_summary()
 
+#↑上と同じ意味＝データセット全体のテーブルを自動でつくる
 tbl_summary(ten_kukan20)
 
 #記述統計量にラベルを付けてテーブルで出力する
@@ -114,16 +119,21 @@ ten_kukan20 %>%
               digits = all_continuous() ~ 1) %>% #数値の部分が小数点第y位の部分の値
   modify_header(label ~ "男女別身長体重") # ""の部分には好きな文字列を入れられる。何も入れなければ空欄になる
 
+#男女の平均身長に有意差はある？
+t.test(height,sex,var.equal = T)
+
 #身長と体重のプロット書いてみて
 ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   aes(x = height, y = weight)+ # height,weight列をx,y軸にmapping
   geom_point() +                  # 散布図を描く
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
-  #theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
+  
+#せっかくだから男女別に色分けした書いてみる
 ggplot(data = ten_kukan20, aes(x = height, y = weight, colour = sex_c)) + # ten_kukan20データでキャンバス準備
-  geom_point() +                  # 散布図を描く
+  geom_point(size = 2) +                  # 散布図を描く
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
@@ -137,9 +147,18 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
-#男女の平均身長に有意差はある？
+#男性と女性の身長の箱ひげ図にプロットもしてみよう
+library(cowplot)
 
-t.test(height,sex,var.equal = T)
+ggplot(data = ten_kukan20) +
+  aes(x = sex_c, y = height, fill = sex_c) +
+  geom_boxplot() +
+  geom_jitter(aes(x = sex_c, y = height, color = sex_c), width = 0.1, shape = 21, colour = "BLACK", size = 3) + # shapeパラメータで輪郭線のある円を指定
+  xlab("sex") + ylab("height") +
+  scale_colour_tableau()+
+  theme_cowplot( 26 ) +
+  theme_gray(base_size = 15) +
+  theme_gray(base_family = "HiraKakuPro-W3")
 
 
 #男性と女性の身長の平均の比較をseエラーバーをつけて書く（ggplot）
@@ -151,12 +170,10 @@ ggplot(data = ten_kukan20)+
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
-
+  
 #男性と女性の身長の雨雲図を書いて比較してみて
-
 install.packages("ggdist")
 library(ggdist)
-
 
 ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
@@ -175,17 +192,7 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   ggdist::stat_dots(
     side = "left",
     justification = 1.1,
-    binwidth = 0.25)+
+    binwidth = 0.5)+
   xlab("sex") + ylab("height") +
-<<<<<<< Updated upstream
-  scale_fill_tq()+
-  theme_tq()+
   coord_flip()+
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
-
-=======
-  #scale_fill_tq()+
-  #theme_tq()+
-  theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
-  coord_flip()
->>>>>>> Stashed changes
