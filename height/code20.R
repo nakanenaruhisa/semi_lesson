@@ -130,7 +130,6 @@ ggplot(data = ten_kukan20) +     # tenkukan20データでキャンバス準備
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
-  
 #せっかくだから男女別に色分けした書いてみる
 ggplot(data = ten_kukan20, aes(x = height, y = weight, colour = sex_c)) + # ten_kukan20データでキャンバス準備
   geom_point(size = 2) +                  # 散布図を描く
