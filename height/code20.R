@@ -160,6 +160,9 @@ ggplot(data = ten_kukan20) +
   theme_gray(base_family = "HiraKakuPro-W3")
 
 
+#男女の平均身長に有意差はある？
+t.test(height,sex,var.equal = T)
+
 #男性と女性の身長の平均の比較をseエラーバーをつけて書く（ggplot）
 ggplot(data = ten_kukan20)+
   aes(x = sex_c, y = height, color = sex_c)+
