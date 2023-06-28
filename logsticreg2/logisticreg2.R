@@ -24,8 +24,10 @@ theme_set(theme_gray(
 ))
 
 
+
 #カテゴリ変数の作成
-dataset <- multureg2_dataset %>% 
+dataset <- multureg2_dataset %>%
+  mutate(event_c = factor(event,levels = 0:1,labels = c("入院中","退院")))%>%
   mutate(oral_care_c = factor(oral_care,levels = 0:1,labels = c("未実施","実施"))) %>% 
   mutate(cohabiting_family_c = factor(cohabiting_family,levels = 0:1,labels = c("同居無","同居有")))%>%
   mutate(housing_ownership_c = factor(housing_ownership,levels = 0:1,labels = c("賃貸","所有")))%>%
@@ -35,9 +37,9 @@ dataset <- multureg2_dataset %>%
 view(dataset)
 
 #datasetの要約表
-tbl_summary(data)
+tbl_summary(dataset)
 
-logireg <- glm(data = dataset, event ~ oral_care_c + care_level + cohabiting_family,family=binomial)
+logireg <- glm(data = dataset, event ~ oral_care_c + care_level_c + cohabiting_family,family=binomial(link="logit"))
 
 # 多重共線性のチェック
 vif(logireg)
@@ -47,11 +49,11 @@ summary(logireg)
 exp(logireg$coefficients)
 
 
-#居住状態を従属変数としてロジスティック回帰分析
+#退院の有無を従属変数としてロジスティック回帰分析
 logireg <- list()
-logireg[['Model 1']] <- glm(data = dataset, event ~ oral_care_c+care_level,family=binomial)
-logireg[['Model 2']] <- glm(data = dataset, event ~ oral_care_c+care_level+cohabiting_family,family=binomial)
-logireg[['Model 3']] <- glm(data = dataset, event ~ oral_care_c+care_level+cohabiting_family+housing_ownership_c,family=binomial)
+logireg[['Model 1']] <- glm(data = dataset, event ~ oral_care_c+care_level,family=binomial(link="logit"))
+logireg[['Model 2']] <- glm(data = dataset, event ~ oral_care_c+care_level+cohabiting_family,family=binomial(link="logit"))
+logireg[['Model 3']] <- glm(data = dataset, event ~ oral_care_c+care_level+cohabiting_family+housing_ownership_c,family=binomial(link="logit"))
 modelsummary (logireg)
 
 
@@ -60,7 +62,7 @@ install.packages("coefplot")
 library(coefplot)
 
 #ggcoef
-logireg <- glm(data = dataset, event ~ oral_care_c+care_level+cohabiting_family+housing_ownership_c,family=binomial)
+logireg <- glm(data = dataset, event ~ oral_care_c+care_level+cohabiting_family+housing_ownership_c, family=binomial(link="logit"))
 
 ggcoef(logireg,
        mapping = aes_string(y = "term", x = "estimate"),
