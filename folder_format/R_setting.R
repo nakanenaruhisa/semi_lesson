@@ -1,14 +1,10 @@
-#Rを使う前に以下のコードを必ず実行すること
+# Rを使う前に以下のコードを必ず実行すること
 
-#自分のPCのドライブにR専用のフォルダを作成する
+# 作業フォルダの確認
+getwd()
 
-getwd() #今の作業フォルダを確認するコマンド
-#　"/Users/naruhisa/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R"
-
-# 作業フォルダをR専用フォルダに変更するコマンド
-setwd("~/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R/semi_lesson")
-
-getwd() #今の作業フォルダを確認するコマンド
+# 作業フォルダを semi_lesson に変更（このファイルが folder_format 内にある場合は1つ上へ）
+if (basename(getwd()) == "folder_format") setwd("..")
 
 #全部の変数を消す
 rm(list=ls())
