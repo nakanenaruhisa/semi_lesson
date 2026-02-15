@@ -1,4 +1,20 @@
-.Rproj.user
-.Rhistory
+# R の一時ファイル・個人用（教材には含めない）
 .RData
-.Ruserdata
+.RDataTmp
+.Rhistory
+.Rproj.user/
+*.Rproj.user/
+
+# macOS
+.DS_Store
+
+# 公開したくないフォルダがある場合は次の行の # を外す
+Lesson0_秘密のキーワード/
+*.Rproj.user/
+
+sample_dataset/
+応用編/
+multireg_3/
+multireg_4/
+renv
+sample_dataset

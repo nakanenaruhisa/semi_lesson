@@ -5,6 +5,7 @@ library(GGally)
 library(dbplyr)
 library(ggthemes)
 library(gtsummary)
+library(modelsummary)
 
 #全部の変数を消す
 rm(list=ls())
@@ -23,6 +24,8 @@ data(package="lme4") #パッケージのサンプルを見る
 
 head(cbpp)
 data <- cbpp
+
+
 view(data)
 
 #incidenceと集団サイズのプロット書いてみて
@@ -31,6 +34,7 @@ ggplot(data = data) +     # dataデータでキャンバス準備
   geom_point() +# 散布図を描く
   geom_smooth(method = "lm")+
   scale_colour_tableau()+
+  labs(x = "集団サイズ", y = "病気")+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
 
@@ -46,8 +50,16 @@ reg_data |>
   modify_header(label ~ "病気x集団サイズ") # ""の部分には好きな文字列を入れられる
 
 #調査時期を考慮したマルチレベル分析のプロットを書く
-library(lattice)
-xyplot(incidence  ~ size, data = data, group = period, pch = 19, type = c("p","r"), auto.key = list(pch = 19, corner=c(0,1), border = T, padding.text = 1.5, columns = 1), par.settings = simpleTheme(pch = 16))
+ggplot(data = data, aes(x = size, y = incidence, color = factor(period))) +
+  geom_point(shape = 19) + 
+  geom_smooth(method = 'lm', se = FALSE) +
+  theme_minimal() +
+  scale_color_discrete(name = "時期") +
+  theme(legend.position = c(0,1), legend.justification = c(0,1)) +
+  labs(x = "集団サイズ", y = "病気")+
+  theme_gray(base_size = 15) + #grayテーマで
+  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+
 
 #調査時期を考慮した単回帰式を作るよ
 multireg_data <- lmList(incidence ~ size|period,data = data) 
@@ -59,4 +71,3 @@ summary(multireg_data)
 #調査時期を考慮したマルチレベル分析をするよ
 fitm1 <- lmer(incidence ~ size + (size|period),data = data)
 summary(fitm1)
-

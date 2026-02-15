@@ -24,31 +24,36 @@ theme_set(theme_gray(
 ))
 
 #dataをインポート
+logsticreg_sample <- read_excel("logisticreg/logsticreg_sample.xlsx")
 data <- logsticreg_sample
 
 #datasetの要約表
 tbl_summary(data)
 
-logireg <- glm(data = data, formula = regidencial_status ~ age+gender+nintei_grade+family_status+public_assistance+public_pension)
+logireg <- glm(data = data, regidencial_status ~ age+gender+nintei_grade+family_status+public_assistance+public_pension,family=binomial(link="logit"))
 
 # 多重共線性のチェック
 vif(logireg)
+#オッズ比の計算
+exp(logireg$coefficients)
 summary(logireg)
 
 #居住状態を従属変数としてロジスティック回帰分析
 logireg <- list()
-logireg[['Model 1']] <- glm(data = data, formula = regidencial_status ~ age+gender)
-logireg[['Model 2']] <- glm(data = data, formula = regidencial_status ~ age+gender+nintei_grade)
-logireg[['Model 3']] <- glm(data = data, formula = regidencial_status ~ age+gender+nintei_grade+family_status)
-logireg[['Model 4']] <- glm(data = data, formula = regidencial_status ~ age+gender+nintei_grade+family_status+public_assistance+public_pension)
+logireg[['Model 1']] <- glm(data = data, regidencial_status ~ age+gender,family=binomial(link="logit"))
+logireg[['Model 2']] <- glm(data = data, regidencial_status ~ age+gender+nintei_grade,family=binomial(link="logit"))
+logireg[['Model 3']] <- glm(data = data, regidencial_status ~ age+gender+nintei_grade+family_status,family=binomial(link="logit"))
+logireg[['Model 4']] <- glm(data = data, regidencial_status ~ age+gender+nintei_grade+family_status+public_assistance+public_pension,family=binomial(link="logit"))
 modelsummary (logireg)
+
 
 
 install.packages("coefplot")
 library(coefplot)
 
 #ggcoef
-logireg <- glm(data = data, formula = regidencial_status ~ age+gender+nintei_grade+family_status+public_assistance+public_pension)
+logireg <- glm(data = data, regidencial_status ~ age + gender + nintei_grade+family_status+public_assistance+public_pension,
+family=binomial(link="logit"))
 
 ggcoef(logireg,
        mapping = aes_string(y = "term", x = "estimate"),

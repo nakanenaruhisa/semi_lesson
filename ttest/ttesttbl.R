@@ -1,45 +1,35 @@
-#パッケージの読み込み
-library("gtsummary")
-#tidyverseパッケージがなければインストール
-if(!require("tidyverse", quietly = TRUE)){
-  install.packages("tidyverse");require("tidyverse")
+# T検定のサンプルコード
+
+# サンプルデータの作成
+set.seed(123) # 再現性のため
+group1 <- rnorm(30, mean = 10, sd = 2) # 平均10、標準偏差2の正規分布から30個のデータ
+group2 <- rnorm(30, mean = 12, sd = 2) # 平均12、標準偏差2の正規分布から30個のデータ
+
+# データの可視化
+par(mfrow=c(1,2))
+hist(group1, main="グループ1のヒストグラム", xlab="値", ylab="頻度")
+hist(group2, main="グループ2のヒストグラム", xlab="値", ylab="頻度")
+
+
+# 基本統計量の計算
+cat("\nグループ1の平均値:", mean(group1))
+cat("\nグループ1の標準偏差:", sd(group1))
+cat("\nグループ2の平均値:", mean(group2))
+cat("\nグループ2の標準偏差:", sd(group2))
+
+# 対応のない2群のt検定の実行
+t_test_result <- t.test(group1, group2)
+
+# 結果の表示
+cat("\n\nt検定の結果:")
+cat("\nt値:", t_test_result$statistic)
+cat("\n自由度:", t_test_result$parameter)
+cat("\np値:", t_test_result$p.value)
+cat("\n95%信頼区間:", t_test_result$conf.int)
+
+# 結果の解釈
+if(t_test_result$p.value < 0.05) {
+  cat("\n\n結果: 2つのグループ間に統計的に有意な差があります（p < 0.05）")
+} else {
+  cat("\n\n結果: 2つのグループ間に統計的に有意な差はありません（p >= 0.05）")
 }
-
-###データ例の作成#####
-set.seed(1234)
-TestData <- tibble(Group = sample(paste0("Group", 1:2), 100,
-                                  replace = TRUE),
-                   Data1 = sample(50:200, 100, replace = TRUE),
-                   Data2 = sample(0:10, 100, replace = TRUE),
-                   Data3 = sample(LETTERS[1:3], 100, replace = TRUE))
-#確認
-TestData
-
-#データをテーブルに変換:tbl_summaryコマンド
-#単純に変換
-TestData %>%
-  tbl_summary()
-
-#Groupで分割し変換
-#分割指標を設定:byオプション
-TestData %>%
-  tbl_summary(by = Group) %>%
-  #列を追加
-  add_n() %>% 
-  #検定結果を追加:add_pオプション
-  #各種検定の検定コマンドに引数を渡す:test.argsオプション
-  #例では分散が等しいと仮定して"t.test"を求める
-  #各種検定詳細は記事内を確認くしてください
-  add_p(test = list(all_continuous() ~ "t.test",
-                    Data3 ~ "chisq.test"),
-        test.args = all_continuous() ~ list(var.equal = TRUE)) %>%
-  #先頭行の内容設定:modify_headerオプション
-  #**で囲むと太字になります,以下同様
-  modify_header(label = "**指標**", p.value = "**P**") %>%
-  #先頭行を分割する  
-  modify_spanning_header(list(all_stat_cols() ~ "KARADA GROUP",
-                              starts_with("p.value") ~ "**p-value**")) %>%
-  #脚注の内容設定:modify_footnoteオプション
-  modify_footnote(all_stat_cols() ~ "median (IQR) for KARADANI; N (%) for IIMONO") %>%
-  #表題の内容設定:modify_footnoteオプション  
-  modify_caption("**KARADA-GOOD** (N = {N})")

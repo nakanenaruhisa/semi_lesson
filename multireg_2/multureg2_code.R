@@ -25,32 +25,42 @@ theme_set(theme_gray(
 ))
 
 #datasetを読み込む
-multureg2_dataset <- read_csv("multireg_2/multureg2_dataset.csv")
-
-as_tibble(multureg2_dataset)
+multureg2_dataset <- read_excel("multireg_2/multureg2_dataset.xlsx")
+dataset <- multureg2_dataset
+as_tibble(dataset)
 
 #カテゴリ変数の作成
 
-dataset <- multureg2_dataset %>% 
+dataset <- dataset %>% 
   mutate(oral_care_c = factor(oral_care,levels = 0:1,labels = c("未実施","実施"))) %>% 
+  mutate(gender_c = factor(gender,levels = 1:2,labels = c("男性","女性"))) %>% 
   mutate(cohabiting_family_c = factor(cohabiting_family,levels = 0:1,labels = c("同居無","同居有")))%>%
   mutate(housing_ownership_c = factor(housing_ownership,levels = 0:1,labels = c("賃貸","所有")))%>%
-  mutate(municipality_scale_c = factor(municipality_scale,levels = 1:3,labels = c("一般市","中核市","政令市")))
+  mutate(municipality_scale_c = factor(municipality_scale,levels = 1:3,labels = c("一般市","中核市","政令市")))%>%
+  mutate(care_level_c = factor(care_level,levels = 1:5,labels = c("要介護度1","要介護度2","要介護度3","要介護度4","要介護度5")))
+
 
 #統合したデータセットを表にする
 dataset <- dataset %>% 
-  select(id,discharge_days,oral_care_c,care_level,cohabiting_family_c,housing_ownership_c,household_income,municipality_scale_c)
+  select(discharge_days,gender_c,oral_care_c,care_level_c,cohabiting_family_c,housing_ownership_c,household_income,municipality_scale_c)
 
 tbl_summary(dataset)
 
+#従属変数の分布を確認する（正規分布か、ポアソン分布か？）
+ggplot(data = dataset) +
+  aes(x = discharge_days) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "black") +
+  theme_gray(base_size = 15) +
+  theme_gray(base_family = "HiraKakuPro-W3")
+
 #退院日数を従属変数として単回帰（要介護度）
-reg_care_lebel <- lm(data = dataset, formula = discharge_days ~ care_level)
+reg_care_lebel <- lm(data = dataset, formula = discharge_days ~ care_level_c)
 
 reg_care_lebel
 
 #プロットを回帰直線を入れて書いてみて
 ggplot(data = dataset) +     
-  aes(x = care_level, y = discharge_days, label = care_level)+
+  aes(x = care_level_c, y = discharge_days, label = care_level_c)+
   geom_point() +                  # 散布図を描く
   geom_smooth(method = "lm")+  #回帰直線を描く
   #geom_text(aes(y = discharge_days, label = care_level_c), size = 2, vjust = 4)+
@@ -87,7 +97,7 @@ ggplot(data = dataset) +
 
 
 #重回帰分析
-gmlresult <- lm(data = dataset, discharge_days ~ oral_care_c + care_level + household_income)
+gmlresult <- lm(data = dataset, discharge_days ~ gender_c + oral_care_c + care_level_c + household_income)
 
 # 多重共線性のチェック
 vif(gmlresult)
@@ -99,7 +109,9 @@ gmlresult[['model_1']] <- lm(discharge_days ~ oral_care_c, data =dataset)
 #モデル2（口腔ケア＋世帯収入）
 gmlresult[['model_2']] <- lm(discharge_days ~ oral_care_c+ household_income, data =dataset)
 #モデル3（口腔ケア＋世帯収入+要介護度）
-gmlresult[["model_3"]] <- lm(discharge_days ~ oral_care_c+ household_income  + care_level , data =dataset)
+gmlresult[["model_3"]] <- lm(discharge_days ~ oral_care_c+ household_income  + care_level_c , data =dataset)
+#モデル4（口腔ケア＋世帯収入+要介護度+gender）
+gmlresult[["model_4"]] <- lm(discharge_days ~ oral_care_c + household_income  + care_level_c+ gender_c,data =dataset)
 
 #回帰表テーブル
 modelsummary (gmlresult, statistic = 'conf.int', conf_level = .99, gof_omit = "AIC|BIC",stars = TRUE) # 99% 信頼区間)
@@ -111,10 +123,10 @@ texreg::screenreg(gmlresult)
 install.packages("coefplot")
 library(coefplot)
 library(broom)
-coefplot(gmlresult[["model_3"]], intercept = FALSE)
+coefplot(gmlresult[["model_4"]], intercept = FALSE)
 
 #ggplot
-tidy(gmlresult[["model_3"]],conf.int = TRUE,
+tidy(gmlresult[["model_4"]],conf.int = TRUE,
      exclude_intercept = TRUE) %>%
   ggplot() +
   geom_vline(xintercept = 0, color = "red") +
@@ -126,7 +138,7 @@ tidy(gmlresult[["model_3"]],conf.int = TRUE,
   labs(x = "")
 
 #ggcoef
-ggcoef(gmlresult[["model_3"]],
+ggcoef(gmlresult[["model_4"]],
        mapping = aes_string(y = "term", x = "estimate"),
        conf.int = TRUE,
        exclude_intercept = TRUE,

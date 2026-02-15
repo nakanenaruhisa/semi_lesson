@@ -15,7 +15,10 @@ rm(list=ls())
 userdataset <- read_csv("widelong/userdataset.csv")
 view(userdataset)
 
-as.factor(userdataset)
+
+#数値の変数を文字列変数に変換
+userdataset <- userdataset %>%
+  mutate(across(where(is.numeric), as.character))
 
 data_long <- userdataset %>%
   pivot_longer(cols = -c(ID, servicename),
@@ -26,4 +29,4 @@ data_long <- userdataset %>%
   select(ID, servicename, date, user)
 
 
-view(data)
+view(data_long)

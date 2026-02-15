@@ -64,7 +64,7 @@ pi_df %>%
   ggplot() +
   geom_rect(aes(xmin = -1, ymin = -1, xmax = 1, ymax = 1),
             fill = "white", color = "black") +
-  geom_point(aes(x = x, y = y)) +
+  geom_point(aes(x = x, y = y), color = "blue") +
   coord_fixed(ratio = 1) +
   theme_minimal()
 
@@ -75,7 +75,7 @@ pi_df %>%
   geom_rect(aes(xmin = -1, ymin = -1, xmax = 1, ymax = 1),
             fill = "white", color = "black") +
   geom_circle(aes(x0 = 0, y0 = 0, r = 1)) +
-  geom_point(aes(x = x, y = y)) +
+  geom_point(aes(x = x, y = y), color = "blue") +
   coord_fixed(ratio = 1) +
   theme_minimal()
 

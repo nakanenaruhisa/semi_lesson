@@ -1,96 +1,93 @@
-#package読み込む
+#必要なパッケージを読み込む - データ操作と可視化に必要なライブラリをインポート
 library(tidyverse)
 library(ggplot2)
 library(ggrepel)
 library(ggthemes)
 library(gtsummary)
+library(readr)
 
-#全部の変数を消す
+#作業環境をクリーンにするため、既存の変数をすべて削除
 rm(list=ls())
 
-#フォルダの固定
-here::here()
-
-#gap_brのデータセットを読み込む
+#賃金格差と出生率のデータを読み込む
 gap_br <- read_csv("gar_br/gap_br.csv")
 
+#データの内容を確認
 view(gap_br)
 
-#gdp_oecdのデータセットを読み込む
-# dplyr:select()を使って「行」を抜き出す方法
-# select(df, ID, Name, Pref, Score)でもOK
-# 項目を「*** = 変数」で一覧に表示される変数も変更できる（原則半角英数字）
+#賃金格差と出生率の分布を確認するためのヒストグラム
+hist(gap_br$gap)
+hist(gap_br$birthrate)
+
+#賃金格差と出生率の関係を可視化する散布図(年を表示、回帰直線なし)
+ggplot(data = gap_br)+
+  aes( x= gap, y = birthrate, label=year) +
+  geom_point() +                  
+  geom_text_repel(max.overlaps = 6)+
+  theme_igray(base_size = 15) + 
+  scale_colour_tableau()+
+  theme_igray(base_family = "HiraKakuPro-W3")
+
+#賃金格差と出生率の関係を可視化する散布図(年を表示、回帰直線あり)
+ggplot(data = gap_br)+
+  aes( x= gap, y = birthrate, label=year) +
+  geom_point() +                  
+  geom_smooth(method = "lm")+
+  geom_text_repel(max.overlaps = 6)+
+  theme_igray(base_size = 15) + 
+  scale_colour_tableau()+
+  theme_igray(base_family = "HiraKakuPro-W3")
+
+#賃金格差が出生率に与える影響を分析する単回帰分析
+gap_br_reg <- lm(data = gap_br, formula = birthrate ~ gap)
+summary(gap_br_reg)
+
+#OECDのGDPデータを読み込む
 gdp_oecd <- read_csv("gar_br/gdp_oecd.csv")
 
+#データフレームの内容を確認
 gdp_oecd %>% tibble::as_tibble()
 
+#必要な列を選択し、列名を変更
+gdp_oecd <- gdp_oecd %>% 
+  select(`LOCATION`, year = TIME, gdp = Value)
+
+#日本のデータのみを抽出
 gdp_oecd_jpn <- gdp_oecd %>% 
-  select(`﻿LOCATION`, year = TIME, gdp = Value)
+  filter(gdp_oecd_jpn$`LOCATION` == "JPN")
 
-#JPNだけを抜き出す
-gdp_oecd_jpn <- gdp_oecd_jpn %>% 
-  filter(gdp_oecd_jpn$`﻿LOCATION` == "JPN")
-
-#データセットを結合する
+#賃金格差・出生率データとGDPデータを結合
 gap_br_gdp <- merge(gdp_oecd_jpn, gap_br, by = "year") 
 
-#LOCATIONを取り除く
+#不要な列を削除
 gap_br_gdp <- gap_br_gdp %>%
-  select(-`﻿LOCATION`)
+  select(-`LOCATION`)
 
-#変数を箱に入れる
+#分析用の変数を作成
 gap <- gap_br_gdp$gap
 gdp <- gap_br_gdp$gdp
 br <- gap_br_gdp$birthrate
 
-<<<<<<< Updated upstream
-#一?テーブルにしておく
+#データの要約統計量を表示
 gap_r_gdp %>%
   tbselect(-year) %>%
   l_summary()
 
-#pgdとbrで散布図を書く
-=======
-#GDPとbirthrateで散布図を書く(回帰直線なし)
->>>>>>> Stashed changes
+#GDPと出生率の関係を可視化する散布図(年を表示、回帰直線なし)
 ggplot(data = gap_br_gdp)+
   aes( x= gdp, y = br, label=year) +
-  geom_point() +                  # 散布図を描く
+  geom_point() +                  
   geom_text_repel(max.overlaps = 6)+
   theme_igray(base_size = 15) + 
   scale_colour_tableau()+
-  theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_igray(base_family = "HiraKakuPro-W3")
 
-#GDPとbirthrateで散布図を書く（回帰直線あり）
+#GDPと出生率の関係を可視化する散布図(年を表示、回帰直線あり)
 ggplot(data = gap_br_gdp)+
   aes( x= gdp, y = br, label=year) +
-  geom_point() +                  # 散布図を描く
+  geom_point() +                  
   geom_smooth(method = "lm")+
   geom_text_repel(max.overlaps = 6)+
   theme_igray(base_size = 15) + 
   scale_colour_tableau()+
-  theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
-
-<<<<<<< Updated upstream
-#gapとbr?で散布図を書く
-=======
-#gapとbrで散布図を書く（回帰直線なし）
->>>>>>> Stashed changes
-ggplot(data = gap_br_gdp)+
-  aes( x= gap, y = br, label=year) +
-  geom_point() +                  # 散布図を描く
-  geom_text_repel(max.overlaps = 6)+
-  theme_igray(base_size = 15) + 
-  scale_colour_tableau()+
-  theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
-
-
-#gapとbrで散布図を書く（回帰直線あり）
-ggplot(data = gap_br_gdp)+
-  aes( x= gap, y = br, label=year) +
-  geom_point() +                  # 散布図を描く
-  geom_smooth(method = "lm")+
-  geom_text_repel(max.overlaps = 6)+
-  theme_igray(base_size = 15) + 
-  scale_colour_tableau()+
-  theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_igray(base_family = "HiraKakuPro-W3")

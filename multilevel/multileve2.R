@@ -5,6 +5,7 @@ library(GGally)
 library(dbplyr)
 library(ggthemes)
 library(gtsummary)
+library(lattice)
 
 #全部の変数を消す
 rm(list=ls())
@@ -31,6 +32,7 @@ ggplot(data = data) +     # dataデータでキャンバス準備
   aes(x = X, y = Y)+ 
   geom_point() +# 散布図を描く
   geom_smooth(method = "lm")+
+  labs(x = "勉強時間", y = "成績")+
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
@@ -47,8 +49,17 @@ reg_data %>%
   modify_header(label ~ "") # ""の部分には好きな文字列を入れられる
 
 #学校別を考慮したマルチレベル分析のプロットを書く
-library(lattice)
-xyplot(Y~ X, data = data, group = school, pch = 19, type = c("p","r"), auto.key = list(pch = 19, corner=c(0,1), border = T, padding.text = 1.5, columns = 1), par.settings = simpleTheme(pch = 16))
+ggplot(data = data, 
+  aes(x = X, y = Y, color = factor(school),label = school)) +
+  geom_point(shape = 19) + 
+  geom_smooth(method = 'lm', se = FALSE) +
+  theme_minimal() +
+  scale_color_discrete(name = "学校") +
+  theme(legend.position = c(0,1), legend.justification = c(0,1)) +
+  labs(x = "勉強時間", y = "成績")+
+  theme_igray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+
+
 
 #学校別を考慮した単回帰式を作るよ
 multireg_data <- lmList(Y ~ X|school,data = data) 

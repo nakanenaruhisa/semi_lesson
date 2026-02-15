@@ -1,10 +1,5 @@
 #クロス集計とモザイクプロット
 
-#大学のネットワークの場合
-options(RCurlOptions = list(proxy = "proxy.kpu.ac.jp:8080"))
-Sys.setenv("http_proxy"="http://proxy.kpu.ac.jp:8080")
-options(repos=local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.ism.ac.jp"; r }))
-
 #packageの準備
 install.packages("devtools")
 library(tidyverse)
@@ -14,9 +9,6 @@ library(dbplyr)
 library(ggthemes)
 library(gtsummary)
 library(ggmosaic)
-
-#フォルダの固定
-here::here()
 
 #全部の変数を消す
 rm(list=ls())
@@ -61,8 +53,17 @@ remarrigewill_c %>%
               digits = all_continuous() ~ 1) %>% #数値の部分が小数点第y位の部分の値
   modify_header(label ~ "") # ""の部分には好きな文字列を入れられる。何も入れなければ空欄になる
 
+# データをカテゴリー変数でクロス集計
+table_data <- table(remarrigewill_c$gender_c, remarrigewill_c$remarrige_will_c)
+
+# χ二乗検定の実行
+chisq_result <- chisq.test(table_data)
+
+# χ二乗検定結果の表示
+print(chisq_result)
+
 #せっかくだから男女別に書いてみる
-remarrigewill_c %>% 
+table_data　<- remarrigewill_c %>% 
   select(gender_c,remarrige_will_c) %>% 
   tbl_summary(label = list(gender_c ~ "性別",
                            remarrige_will_c ~ "再婚意思"), #~の前には列名、後ろにはつけたい名前を""で囲んで入れ、,で一つずつ区切る
@@ -70,6 +71,12 @@ remarrigewill_c %>%
               by = gender_c,
               digits = all_continuous() ~ 1) %>% #数値の部分が小数点第y位の部分の値
   modify_header(label ~ "") # ""の部分には好きな文字列を入れられる。何も入れなければ空欄になる
+
+# add_p()でχ二乗検定を行い、その結果を表に追加
+table_data_with_p <- table_data %>% 
+  add_p(test = list(remarrige_will_c ~ "chisq.test"))
+
+table_data_with_p
 
 #モザイクプロットを書く
 ggplot(remarrigewill_c) +

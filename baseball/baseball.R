@@ -1,8 +1,5 @@
-Rを使う下準備
-#packageの準備
+#Rを使う下準備
 install.packages("modelsummary")
-
-renv::init()
 
 #packageの準備
 library(tidyverse)
@@ -13,11 +10,9 @@ library(ggthemes)
 library(gtsummary)
 library(modelsummary)
 
-#フォルダの固定
-here::here()
-
 
 #全部の変数を消す
+
 rm(list=ls())
 
 stats_summary <- read_csv("baseball/stats_summary.csv")
@@ -75,7 +70,7 @@ OPS_重回帰分析[['Model 5 ']]　<- lm(data = data, formula = OPS ~ 本塁打
 msummary(OPS_重回帰分析)
 
 #OPSと三振のチームごとのプロット書いてみて
-ggplot(data = data) +     # tenkukan20データでキャンバス準備
+ggplot(data = data) +
   aes(x = OPS, y = 三振)+ # height,weight列をx,y軸にmapping,sexごとに色分け
   geom_point() +                  # 散布図を描く
   scale_colour_tableau()+
@@ -223,3 +218,4 @@ ggplot(data = cleague)+
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+

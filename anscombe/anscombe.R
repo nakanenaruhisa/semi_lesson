@@ -1,3 +1,5 @@
+#このファイルは、散布図を書くことの重要性を学習します。
+
 #全部の変数を消す
 rm(list=ls())
 
@@ -7,9 +9,6 @@ library(GGally)
 library(dbplyr)
 library(ggthemes)
 library(gtsummary)
-
-#フォルダの固定
-here::here()
 
 #テーマのセット
 theme_set(theme_grey(base_family = "HiraginoSans-W3"))

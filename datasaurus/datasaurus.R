@@ -1,11 +1,4 @@
 #Rを使う下準備
-
-#大学のネットワークの場合
-options(RCurlOptions = list(proxy = "proxy.kpu.ac.jp:8080"))
-Sys.setenv("http_proxy"="http://proxy.kpu.ac.jp:8080")
-options(repos=local({ r <- getOption("repos"); r["CRAN"] <- "http://cran.ism.ac.jp"; r }))
-
-
 #packageの準備
 install.packages("here")
 install.packages("datasauRus")
@@ -19,10 +12,6 @@ library(ggthemes)
 library(gtsummary)
 library(datasauRus)
 
-
-#フォルダの固定
-here::here()
-
 #全部の変数を消す
 rm(list=ls())
 
@@ -34,9 +23,9 @@ theme_set(theme_gray(
   base_rect_size = 0.2 #外枠の線の太さを設定。デフォルトはbase_size/22
 ))
 
-#
 suppressPackageStartupMessages(library(dplyr))
-  datasaurus_dozen %>% 
+
+datasaurus_dozen %>% 
     group_by(dataset) %>% 
     summarize(
       mean_x    = mean(x),
@@ -49,6 +38,14 @@ suppressPackageStartupMessages(library(dplyr))
 view(datasaurus_dozen
      )
 
+#tble_summaryを使って統計量を出す
+datasaurus_dozen %>% 
+  select(x, y, dataset) %>% 
+  tbl_summary(
+    statistic = list(all_continuous() ~ "{mean} ± {sd}", 
+                     all_categorical() ~ "{n} ({p}%)"
+    )
+  )
 
 
 ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
@@ -59,14 +56,7 @@ ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
 
 ## Loading required namespace: ggplot2
 
-#身長と体重のプロット書いてみて
+#プロット書いてみて
 datasaurus_dozen %>% 
-  (dataset = "dino") %>%
-  
-ggplot(data = datasaurus_dozen) +
-  aes(x = x, y = y) +
-  geom_point() +
-  scale_color_brewer(palette = "Set1") + # 代替のカラースケール
-  theme_gray(base_size = 15) + # グレーのテーマ
-  theme(text = element_text(family = "HiraKakuPro-W3")) # フォントファミリーの設定
+  (dataset = "dino") 
 

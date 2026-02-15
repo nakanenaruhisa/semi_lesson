@@ -78,8 +78,6 @@ rm(list=ls())
 
 
 #男性と女性の身長の雨雲図を書いて比較してみて
-<<<<<<< Updated upstream
-=======
 ggplot(data = ten_kukan100) +     # tenkukan20データでキャンバス準備
   aes(x = sex_c, y = height, fill = sex_c)+ # height,weight列をx,y軸にmapping,sexごとに色分け
   ggdist::stat_halfeye(
@@ -101,5 +99,4 @@ ggplot(data = ten_kukan100) +     # tenkukan20データでキャンバス準備
   theme_tq()+
   theme_gray(base_family = "HiraKakuPro-W3") +#文字化けしないおまじない
   coord_flip()
->>>>>>> Stashed changes
 
