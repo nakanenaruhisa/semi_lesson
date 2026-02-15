@@ -1,5 +1,14 @@
 #Rを使う準備
 
+#作業ディレクトリの確認と固定
+getwd()
+setwd("/Users/naruhisa/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R/semi_lesson")
+#　↑ここは自分のディレクト入りにあわせて変える
+
+#全部の変数を消す
+rm(list=ls())
+
+#パッケージの準備
 library(tidyverse)
 library(ggplot2)
 library(GGally)
@@ -7,8 +16,6 @@ library(dbplyr)
 library(ggthemes)
 library(gtsummary)
 
-#全部の変数を消す
-rm(list=ls())
 
 #dataをインポート
 data <- read_csv("multireg_3/glmm.csv")
@@ -32,7 +39,7 @@ data$id <- factor(data$id)
 data$period <- factor(data$period)
 data$stage <- factor(data$stage)
 
-# periodoの基準を bl に設定
+# periodの基準を baseline に設定
 data$period <- relevel(data$period, ref="bl") 
 
 # stageの基準を IV に設定
