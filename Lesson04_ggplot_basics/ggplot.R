@@ -13,17 +13,20 @@
 # Rの基本操作（Lesson1）は理解できている前提で進めるよ！
 #=============================================================
 
-
 #=============================================================
 # 【準備】パッケージとデータ
 #=============================================================
 
-rm(list=ls())
+rm(list = ls())
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-if (grepl("^Lesson[0-9]", basename(getwd())) || basename(getwd()) %in% c("folder_format", "applied")) setwd("..")
+getwd()
+setwd(
+  "/Users/naruhisa/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R/semi_lesson"
+)
+# 作業フォルダを1つ上に移動（必要に応じてコメントアウト）
 
-library(tidyverse)  # ggplot2 も含まれている
-library(ggthemes)   # きれいなテーマや配色を追加
+library(tidyverse) # ggplot2 も含まれている
+library(ggthemes) # きれいなテーマや配色を追加
 
 #テーマのセット（日本語が文字化けしないようにする）
 theme_set(theme_gray(
@@ -36,7 +39,6 @@ theme_set(theme_gray(
 str(iris)
 head(iris)
 # Species = 品種（setosa, versicolor, virginica の3種）
-
 
 #=============================================================
 # 【STEP 1】 ggplotの3つの部品を理解しよう
@@ -93,7 +95,7 @@ ggplot(data = iris) +
 # 例：全部赤い点にしたいとき
 ggplot(data = iris) +
   aes(x = Sepal.Length, y = Petal.Length) +
-  geom_point(color = "red", size = 2)  # aesの外 → 全部赤
+  geom_point(color = "red", size = 2) # aesの外 → 全部赤
 
 
 #=============================================================
@@ -102,17 +104,12 @@ ggplot(data = iris) +
 
 # 課題1-1: Sepal.Width(x軸) と Sepal.Length(y軸) の散布図を描こう
 
-
 # 課題1-2: 上のグラフに Species で色分けを追加しよう
-
 
 # 課題1-3: 点のサイズを Petal.Width に連動させてみよう
 
-
 # 課題1-4: 全部の点を size = 4, alpha = 0.5 の固定値にしてみよう
 #          （aesの外に書くこと！）
-
-
 
 #=============================================================
 # 【STEP 3】 いろいろな geom を学ぼう
@@ -128,7 +125,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
 # 散布図に傾向線を追加する
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point(size = 2) +
-  geom_smooth(method = "lm")  # lm = 直線（線形回帰）
+  geom_smooth(method = "lm") # lm = 直線（線形回帰）
 
 # method = "loess" にすると曲線になる
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
@@ -158,7 +155,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
 # 箱ひげ図 + 密度プロットを合わせたような図
 ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_violin(alpha = 0.6) +
-  geom_boxplot(width = 0.2, alpha = 0.8)  # 中に小さい箱ひげ図を入れる
+  geom_boxplot(width = 0.2, alpha = 0.8) # 中に小さい箱ひげ図を入れる
 
 # ----- 3-7: geom_bar() ─ 棒グラフ（カウント） -----
 # カテゴリの個数を数えて表示
@@ -198,19 +195,13 @@ ggplot(sample_data, aes(x = month, y = sales)) +
 
 # 課題2-1: Petal.Length のヒストグラムを描こう（binsは自分で調整してみて）
 
-
 # 課題2-2: Petal.Length の密度プロットを品種別（Species）に描こう
-
 
 # 課題2-3: 品種別の Petal.Width の箱ひげ図を描こう
 
-
 # 課題2-4: 上の箱ひげ図に geom_jitter() で点を重ねてみよう
 
-
 # 課題2-5: 品種別の Petal.Width のバイオリンプロットを描こう
-
-
 
 #=============================================================
 # 【STEP 4】 レイヤーの重ね方を理解しよう
@@ -220,14 +211,14 @@ ggplot(sample_data, aes(x = month, y = sales)) +
 
 # 例：散布図 → トレンドライン → ラベルの順で重なる
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
-  geom_point(size = 2) +             # レイヤー1: 点
-  geom_smooth(method = "lm", se = FALSE) +  # レイヤー2: 直線（se=FALSE で信頼区間なし）
-  labs(title = "レイヤーを重ねた例")  # レイヤー3: ラベル
+  geom_point(size = 2) + # レイヤー1: 点
+  geom_smooth(method = "lm", se = FALSE) + # レイヤー2: 直線（se=FALSE で信頼区間なし）
+  labs(title = "レイヤーを重ねた例") # レイヤー3: ラベル
 
 # 順番を変えると見え方が変わる（直線が点の下になる）
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
-  geom_smooth(method = "lm", se = FALSE) +  # 先に直線
-  geom_point(size = 2) +                     # 後から点（上に描かれる）
+  geom_smooth(method = "lm", se = FALSE) + # 先に直線
+  geom_point(size = 2) + # 後から点（上に描かれる）
   labs(title = "レイヤーの順番を変えた例")
 
 
@@ -239,12 +230,12 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point(size = 2) +
   labs(
-    title = "アヤメのがく片と花びらの関係",     # タイトル
-    subtitle = "3品種の比較",                    # サブタイトル
-    x = "がく片の長さ (cm)",                     # x軸ラベル
-    y = "花びらの長さ (cm)",                     # y軸ラベル
-    color = "品種",                              # 凡例タイトル
-    caption = "データ出典: iris dataset (Fisher, 1936)"  # キャプション
+    title = "アヤメのがく片と花びらの関係", # タイトル
+    subtitle = "3品種の比較", # サブタイトル
+    x = "がく片の長さ (cm)", # x軸ラベル
+    y = "花びらの長さ (cm)", # y軸ラベル
+    color = "品種", # 凡例タイトル
+    caption = "データ出典: iris dataset (Fisher, 1936)" # キャプション
   )
 
 
@@ -270,9 +261,9 @@ p + theme_minimal()
 p + theme_classic()
 
 # ggthemes パッケージのテーマ
-p + theme_economist()   # Economist誌風
-p + theme_fivethirtyeight()  # FiveThirtyEight風
-p + theme_wsj()         # ウォールストリートジャーナル風
+p + theme_economist() # Economist誌風
+p + theme_fivethirtyeight() # FiveThirtyEight風
+p + theme_wsj() # ウォールストリートジャーナル風
 
 
 #=============================================================
@@ -280,16 +271,24 @@ p + theme_wsj()         # ウォールストリートジャーナル風
 #=============================================================
 # scale_xxx() で色や軸の範囲などを細かく制御できる
 
-p_base <- ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+p_base <- ggplot(
+  iris,
+  aes(x = Sepal.Length, y = Petal.Length, color = Species)
+) +
   geom_point(size = 2)
 
 # ggthemesの配色（Tableau風）
 p_base + scale_color_tableau()
 
 # 手動で色を指定
-p_base + scale_color_manual(values = c("setosa" = "#E63946",
-                                       "versicolor" = "#457B9D",
-                                       "virginica" = "#2A9D8F"))
+p_base +
+  scale_color_manual(
+    values = c(
+      "setosa" = "#E63946",
+      "versicolor" = "#457B9D",
+      "virginica" = "#2A9D8F"
+    )
+  )
 
 # グラデーション配色（連続値のとき）
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Petal.Width)) +
@@ -299,7 +298,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Petal.Width)) +
 # fill（塗りつぶし）の色を変えるときは scale_fill_xxx()
 ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot() +
-  scale_fill_brewer(palette = "Pastel1")  # RColorBrewer のパレット
+  scale_fill_brewer(palette = "Pastel1") # RColorBrewer のパレット
 
 
 #=============================================================
@@ -309,15 +308,11 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
 # 課題3-1: 品種別の Sepal.Width と Petal.Width の散布図を描いて、
 #          labs() でタイトル・軸ラベル・凡例タイトルを日本語にしよう
 
-
 # 課題3-2: 上のグラフに theme_minimal() を適用しよう
-
 
 # 課題3-3: 色を scale_color_manual() で自分の好きな3色に変えてみよう
 #          ヒント: 色の名前は "red", "blue", "green" や
 #                  カラーコード "#FF6347" のような形式で指定できる
-
-
 
 #=============================================================
 # 【STEP 8】 facet ─ グラフを品種ごとに分割する
@@ -328,17 +323,17 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  facet_wrap(~ Species)  # Species ごとに分割
+  facet_wrap(~Species) # Species ごとに分割
 
 # 列数を指定
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
   geom_point() +
-  facet_wrap(~ Species, ncol = 1)  # 縦に1列で並べる
+  facet_wrap(~Species, ncol = 1) # 縦に1列で並べる
 
 # facet_wrap のパネルごとに独立した軸にする
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
   geom_point() +
-  facet_wrap(~ Species, scales = "free")  # 軸の範囲を品種ごとに変える
+  facet_wrap(~Species, scales = "free") # 軸の範囲を品種ごとに変える
 
 
 #=============================================================
@@ -348,11 +343,8 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
 # 課題4-1: Petal.Width のヒストグラムを品種ごとに分割して描こう
 #          ヒント: facet_wrap(~ Species)
 
-
 # 課題4-2: 品種ごとの散布図（Sepal.Width vs Petal.Width）を
 #          縦1列（ncol = 1）で並べてみよう
-
-
 
 #=============================================================
 # 【STEP 9】 軸の調整
@@ -361,19 +353,19 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
 # 軸の範囲を変更する
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point() +
-  xlim(4, 8) +     # x軸の範囲を 4〜8 に
-  ylim(0, 8)       # y軸の範囲を 0〜8 に
+  xlim(4, 8) + # x軸の範囲を 4〜8 に
+  ylim(0, 8) # y軸の範囲を 0〜8 に
 
 # 軸の目盛りを細かく設定する（scale_x_continuous / scale_y_continuous）
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point() +
-  scale_x_continuous(breaks = seq(4, 8, by = 0.5)) +  # 0.5刻みの目盛り
-  scale_y_continuous(breaks = seq(0, 7, by = 1))       # 1刻みの目盛り
+  scale_x_continuous(breaks = seq(4, 8, by = 0.5)) + # 0.5刻みの目盛り
+  scale_y_continuous(breaks = seq(0, 7, by = 1)) # 1刻みの目盛り
 
 # 軸を反転する
 ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_boxplot() +
-  coord_flip()  # x軸とy軸を入れ替える
+  coord_flip() # x軸とy軸を入れ替える
 
 
 #=============================================================
@@ -381,7 +373,10 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
 #=============================================================
 
 # まずグラフを変数に入れる
-final_plot <- ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+final_plot <- ggplot(
+  iris,
+  aes(x = Sepal.Length, y = Petal.Length, color = Species)
+) +
   geom_point(size = 2.5) +
   geom_smooth(method = "lm", se = FALSE) +
   scale_color_tableau() +
@@ -398,37 +393,21 @@ final_plot
 
 # PNG形式で保存（保存先フォルダがなければ作成）
 dir.create("Lesson04_ggplot_basics/ggplot", showWarnings = FALSE)
-ggsave("Lesson04_ggplot_basics/ggplot/my_iris_plot.png", plot = final_plot, width = 8, height = 6, dpi = 300)
+ggsave(
+  "Lesson04_ggplot_basics/ggplot/my_iris_plot.png",
+  plot = final_plot,
+  width = 8,
+  height = 6,
+  dpi = 300
+)
 
 # PDF形式で保存（レポートや論文に便利）
-ggsave("Lesson04_ggplot_basics/ggplot/my_iris_plot.pdf", plot = final_plot, width = 8, height = 6)
-
-
-#=============================================================
-# 【総合課題】 学んだことを組み合わせてグラフを作ろう
-#=============================================================
-
-# 総合課題1: 以下の条件を満たす散布図を作ろう
-#   - x軸: Petal.Length, y軸: Petal.Width
-#   - 品種ごとに色分け
-#   - geom_smooth(method = "lm") でトレンドラインを追加
-#   - labs() でタイトル「花びらの長さと幅の関係」をつける
-#   - 好きなテーマを適用する
-
-
-# 総合課題2: 以下の条件を満たす箱ひげ図を作ろう
-#   - 品種別の Petal.Length の比較
-#   - geom_jitter() でデータ点を重ねる
-#   - labs() でタイトルと軸ラベルを日本語にする
-#   - scale_fill_manual() で好きな3色に変える
-#   - ggsave() でPNG形式で保存する
-
-
-# 総合課題3: 以下の条件を満たすグラフを自由に作ろう
-#   - facet_wrap() で品種ごとにパネルを分ける
-#   - 1つのパネルの中に geom を2つ以上重ねる
-#   - labs() でタイトル・軸ラベルをつける
-
+ggsave(
+  "Lesson04_ggplot_basics/ggplot/my_iris_plot.pdf",
+  plot = final_plot,
+  width = 8,
+  height = 6
+)
 
 #=============================================================
 # 【おまけ】 ggplot2 の geom 早見表
