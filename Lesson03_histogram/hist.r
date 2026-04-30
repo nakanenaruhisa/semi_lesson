@@ -22,37 +22,31 @@ set.seed(123)
 data <- rnorm(1000, mean = 0, sd = 1)
 
 # データの中身を見せて（対話環境でのみ開く。Rscriptではスキップ）
-View(data)
+print(data)
+
+# データフレームに変換(どちらも同じ意味です)
+
+df <- tibble(data = data)
+df <- data.frame(data)
 
 # 2. ヒストグラムの作成（頻度表示） -------------------------------
-par(family = "sans")
+# ggplot2で頻度ベースのヒストグラムを描画します。
+ggplot(data = df, aes(x = data)) +
+  geom_histogram(breaks = seq(min(data), max(data), length.out = 31),
+                 fill = "lightblue", color = "white") +
+  labs(title = "ヒストグラム：データの頻度分布",
+       x = "値",
+       y = "頻度") +
+  theme_minimal(base_family = "sans")
 
-# hist() 関数を使ってヒストグラムを描画します。
-hist(
-  data,
-  breaks = 30,
-  main = "ヒストグラム：データの頻度分布",
-  xlab = "値",
-  col = "lightblue",
-  border = "white",
-  family = "MS Gothic" # 文字化け防止
-)
-
-# 3. カーネル密度推定の計算 ------------------------------------------
-# density() 関数で、カーネル密度推定（滑らかな分布の推定）を計算します。
-dens2 <- density(data, adjust = 1) # adjustパラメータでなめらかさを調整
-
-# 4. ヒストグラムにカーネル密度推定の曲線を追加 ---------------------
-# hist()のfreq=FALSEにしない場合、yのスケールが合わずフラットになる
-# 密度で重ねる場合はhist()のfreq=FALSEを忘れずに
-hist(
-  data,
-  breaks = 30,
-  main = "ヒストグラム：データの密度分布(密度スケール)",
-  xlab = "値",
-  col = "lightblue",
-  border = "white",
-  freq = FALSE,
-  family = "MS Gothic"
-)
-lines(dens2, col = "red", lwd = 2)
+# 3. ヒストグラムにカーネル密度推定の曲線を追加 ---------------------
+# ggplot2で密度スケールのヒストグラムと密度曲線を重ねます。
+ggplot(data = df, aes(x = data)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 breaks = seq(min(data), max(data), length.out = 31),
+                 fill = "lightblue", color = "white") +
+  geom_density(adjust = 1, color = "red", linewidth = 1) +
+  labs(title = "ヒストグラム：データの密度分布(密度スケール)",
+       x = "値",
+       y = "密度") +
+  theme_minimal(base_family = "sans")
