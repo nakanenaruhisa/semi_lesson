@@ -15,7 +15,7 @@ here::here()
 rm(list=ls())
 
 #テーマのセット
-theme_set(theme_grey(base_family = "HiraginoSans-W3"))
+theme_set(theme_grey(base_family = if (interactive()) "HiraginoSans-W3" else "sans"))
 theme_set(theme_gray(
   base_family = "HiraginoSans-W3",
   base_size = 11, #文字の大きさを設定。デフォルトは11
@@ -58,16 +58,19 @@ remarrigewill_c %>%
   modify_header(label ~ "") # ""の部分には好きな文字列を入れられる。何も入れなければ空欄になる
 
 # データをカテゴリー変数でクロス集計
-table_data <- table(remarrigewill_c$gender_c, remarrigewill_c$remarrige_will_c)
+table_data <- remarrigewill_c %>%
+  count(gender_c, remarrige_will_c, name = "n")
 
 # χ二乗検定の実行
-chisq_result <- chisq.test(table_data)
+chisq_result <- table_data %>%
+  xtabs(n ~ gender_c + remarrige_will_c, data = .) %>%
+  chisq.test()
 
 # χ二乗検定結果の表示
 print(chisq_result)
 
 
-せっかくだから男女別に書いてみる
+# せっかくだから男女別に書いてみる
 table_data　<- remarrigewill_c %>% 
   select(gender_c,remarrige_will_c) %>% 
   tbl_summary(label = list(gender_c ~ "性別",
@@ -88,5 +91,5 @@ ggplot(remarrigewill_c) +
   geom_mosaic(aes(x = product(gender_c, remarrige_will_c), fill = gender_c),na.rm = TRUE)+
   labs(x = "remarrige_will_c", y = "gender_c", title = "再婚意思の男女比較") +
   theme_gray() +
-  theme(plot.title = element_text(hjust = 0.5))
-  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans") #文字化けしないおまじない

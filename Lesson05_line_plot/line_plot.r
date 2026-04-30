@@ -16,20 +16,19 @@
 #=============================================================
 
 rm(list = ls())
+
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-if (
-  grepl("^Lesson[0-9]", basename(getwd())) ||
-    basename(getwd()) %in% c("folder_format", "applied")
-) {
-  setwd("..")
-}
+getwd()
+setwd(
+  "/Users/naruhisa/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R/semi_lesson"
+)
 
 library(tidyverse)
 library(ggthemes)
 
 # 日本語テーマの設定
 theme_set(theme_gray(
-  base_family = "HiraginoSans-W3",
+  base_family = if (interactive()) "HiraginoSans-W3" else "sans",
   base_size = 12
 ))
 
@@ -38,10 +37,10 @@ theme_set(theme_gray(
 # 【STEP 1】 まずデータを作ろう ─ data.frame の復習
 #=============================================================
 # 折れ線グラフ用のデータは「横軸が時間、縦軸が数値」のセット。
-# data.frame() で自分で作ってみよう。
+# tibble() で自分で作ってみよう。
 
 # ある喫茶店の月別売上データ（架空）
-cafe <- data.frame(
+cafe <- tibble(
   month = 1:12,
   sales = c(80, 75, 90, 110, 130, 160, 180, 175, 150, 120, 95, 100)
   # 単位：万円
@@ -96,7 +95,7 @@ ggplot(cafe, aes(x = month, y = sales)) +
 
 # 課題1-1: 下のデータで折れ線グラフを描こう（geom_line + geom_point）
 # ある学生の月別読書冊数
-reading <- data.frame(
+reading <- tibble(
   month = 1:12,
   books = c(2, 3, 1, 4, 5, 3, 6, 7, 4, 3, 2, 5)
 )
@@ -116,7 +115,7 @@ reading <- data.frame(
 # --- 方法1: geom_line() を2回書く（シンプルだけど長い） ---
 
 # まずデータを作る
-company <- data.frame(
+company <- tibble(
   year = 2018:2025,
   sales = c(120, 135, 150, 140, 160, 180, 200, 220), # 売上（百万円）
   costs = c(80, 85, 90, 95, 100, 105, 110, 115) # コスト（百万円）
@@ -175,7 +174,7 @@ ggplot(company_long, aes(x = year, y = amount, color = category)) +
 #=============================================================
 
 # 下のデータは、ある2科目のテスト点数の推移
-scores <- data.frame(
+scores <- tibble(
   exam = 1:5, # 第1回〜第5回
   math = c(60, 65, 70, 75, 85),
   english = c(70, 68, 72, 80, 78)
@@ -295,7 +294,7 @@ ggplot(company_growth, aes(x = year, y = growth, color = category)) +
 
 # 課題3-1: 下のデータに「前月比成長率」の列を追加しよう
 # ヒント: mutate(growth = (visitors - lag(visitors)) / lag(visitors) * 100)
-shop <- data.frame(
+shop <- tibble(
   month = 1:12,
   visitors = c(500, 480, 520, 600, 700, 850, 900, 870, 750, 650, 550, 580)
 )
@@ -345,7 +344,7 @@ final_plot <- ggplot(
   ) +
   scale_x_continuous(breaks = 2018:2025) +
   scale_y_continuous(breaks = seq(0, 250, by = 50)) +
-  theme_grey(base_family = "HiraginoSans-W3", base_size = 12) +
+  theme_grey(base_family = if (interactive()) "HiraginoSans-W3" else "sans", base_size = 12) +
   theme(
     legend.position = "bottom",
     plot.title = element_text(hjust = 0.5, size = 14),
@@ -374,7 +373,7 @@ ggsave(
 #   - labs() でタイトル・軸ラベルをつける
 #   - scale_x_continuous(breaks = ...) で年の目盛りを全部表示する
 
-population <- data.frame(
+population <- tibble(
   year = 2015:2025,
   pop = c(1270, 1268, 1265, 1262, 1260, 1257, 1253, 1250, 1246, 1242, 1238)
   # 日本の人口（百万人・架空データ）
@@ -386,7 +385,7 @@ population <- data.frame(
 #   - scale_color_manual() で好きな色を設定する
 #   - geom_hline() で「平均気温20度」のラインを追加する
 
-temperature <- data.frame(
+temperature <- tibble(
   month = 1:12,
   tokyo = c(5.4, 6.1, 9.4, 14.3, 19.0, 22.7, 26.2, 27.5, 24.2, 18.4, 12.7, 7.7),
   osaka = c(6.0, 6.4, 9.8, 15.2, 19.8, 23.6, 27.4, 28.6, 25.0, 19.2, 13.5, 8.2)
