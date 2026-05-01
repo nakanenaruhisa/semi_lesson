@@ -4,7 +4,7 @@ rm(list = ls())
 # ワーキングディレクトリの確認
 getwd()
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-if (grepl("^Lesson[0-9]", basename(getwd())) || basename(getwd()) %in% c("folder_format", "applied")) setwd("..")
+setwd("..")
 
 #packageの準備
 library(readr)
@@ -19,7 +19,7 @@ library(gtsummary)
 Ramen <- read_csv("Lesson11_data_handling/Ramen.csv")
 
 #データの確認
-view(Ramen)
+print(Ramen)
 
 # dplyr:select()を使って「行」を抜き出す方法
 # select(df, ID, Name, Pref, Score)でもOK
@@ -33,7 +33,7 @@ Ramen_select <- Ramen %>%
   select(ID, Pref, Score, Name)
 
 #選択した変数を含むデータフレームの確認
-view(Ramen_select)
+print(Ramen_select)
 
 # dplyr:select()を使って「行」を抜き出す方法
 # select(df, ID, Name, Pref, Score)でもOK
@@ -47,14 +47,14 @@ Ramen_kyoto_wakayama <- Ramen_select %>%
   filter(Pref == "京都府" | Pref == "和歌山県")
 
 #フィルタリングした結果の確認
-view(Ramen_kyoto_wakayama)
+print(Ramen_kyoto_wakayama)
 
 #ScoreがNA出ないものだけを抜き出してみよう
 Ramen_kyoto_wakayama_na <- Ramen_kyoto_wakayama %>%
   filter(!is.na(Score))
 
 #フィルタリングした結果の確認
-view(Ramen_kyoto_wakayama_na)
+print(Ramen_kyoto_wakayama_na)
 
 # ============================================
 # 課題1: group_by()とsummarise()による集計
@@ -68,3 +68,4 @@ view(Ramen_kyoto_wakayama_na)
 # ============================================
 # Scoreが4.0以上かつ都道府県が「京都府」の店舗だけを抽出してみよう
 # ヒント: filter(Pref == "京都府" & Score >= 4.0)
+

@@ -15,7 +15,7 @@ library(gt)
 
 getwd()
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-if (grepl("^Lesson[0-9]", basename(getwd())) || basename(getwd()) %in% c("folder_format", "applied")) setwd("..")
+setwd("..")
 
 
 #全部の変数を消す
@@ -23,7 +23,7 @@ rm(list=ls())
 
 #テーマのセット
 theme_set(theme_gray(
-  base_family = "HiraginoSans-W3",# macOS用
+  base_family = if (interactive()) "HiraginoSans-W3" else "sans",# macOS用
   base_size = 11, #文字の大きさを設定。デフォルトは11
   base_line_size = 0.2, #罫線の線の太さを設定。デフォルトはbase_size/22
   base_rect_size = 0.2 #外枠の線の太さを設定。デフォルトはbase_size/22
@@ -43,7 +43,7 @@ dataset <- multureg2_dataset %>%
   mutate(municipality_scale_c = factor(municipality_scale,levels = 1:3,labels = c("一般市","中核市","政令市")))%>%
   mutate(care_level_c = factor(care_level,levels = 1:5,labels = c("要介護度1","要介護度2","要介護度3","要介護度4","要介護度5")))
 
-view(dataset)
+print(dataset)
 
 #datasetの要約表その1
 tbl_summary(dataset)
@@ -70,8 +70,7 @@ ggplot(data = dataset) +
   geom_smooth(method = "lm")+  #回帰直線を描く
   scale_colour_tableau()+
   geom_jitter()+
-  theme_gray(base_size = 15) + #grayテーマで
-  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_gray(base_size = 15) #grayテーマで
 
 #要介護度と退院の有無のプロット書いてみて
 ggplot(data = dataset) +
@@ -80,8 +79,7 @@ ggplot(data = dataset) +
   geom_smooth(method = "lm")+  #回帰直線を描く
   geom_jitter(height=0.1, width =0.1) +
   scale_colour_tableau()+
-  theme_gray(base_size = 15) + #grayテーマで
-  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_gray(base_size = 15) #grayテーマで
 
 #オッズ比の計算
 # exp(logireg$coefficients) でもオッズ比は計算できますが、confintと組み合わせて

@@ -22,7 +22,7 @@ rm(list=ls())
 
 #テーマのセット
 theme_set(theme_gray(
-  base_family = "HiraKakuProN-W3",# macOS用
+  base_family = if (interactive()) "HiraKakuProN-W3" else "sans",# macOS用
   base_size = 11, #文字の大きさを設定。デフォルトは11
   base_line_size = 0.2, #罫線の線の太さを設定。デフォルトはbase_size/22
   base_rect_size = 0.2 #外枠の線の太さを設定。デフォルトはbase_size/22
@@ -53,7 +53,7 @@ ggplot(data = data) +
   aes(x = discharge_days) +
   geom_histogram(bins = 20, fill = "skyblue", color = "black") +
   theme_gray(base_size = 15) +
-  theme_gray(base_family = "HiraKakuPro-W3")
+  theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans")
 
 #退院日数を従属変数として単回帰（要介護度）
 reg_care_lebel <- lm(data = data, formula = discharge_days ~ care_level_c)
@@ -68,7 +68,7 @@ ggplot(data = data) +
   #geom_text(aes(y = discharge_days, label = care_level_c), size = 2, vjust = 4)+
   scale_colour_tableau()+
   theme_grey(base_size = 15)+#grayテーマで
-  theme_gray(base_family="HiraginoSans-W3") + #文字化けしないおまじない
+  theme_gray(base_family = if (interactive()) "HiraginoSans-W3" else "sans") + #文字化けしないおまじない
   coord_flip() # グラフを横にする
 
 
@@ -83,7 +83,7 @@ ggplot(data = data) +
   #geom_text(aes(y = discharge_days, label = oral_care_c), size = 2, vjust = 4)+
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
-  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans") #文字化けしないおまじない
 
 ##退院日数を従属変数として単回帰（世帯収入）
 reg_household_income <- lm(data = data, formula = discharge_days ~ household_income)
@@ -96,7 +96,7 @@ ggplot(data = data) +
   #geom_text(aes(y = 県民所得, label = 都道府県), size = 2, vjust = 4)+
   scale_colour_tableau()+
   theme_gray(base_size = 15) + #grayテーマで
-  theme_gray(base_family = "HiraKakuPro-W3") #文字化けしないおまじない
+  theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans") #文字化けしないおまじない
 
 
 #重回帰分析

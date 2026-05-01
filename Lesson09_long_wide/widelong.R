@@ -13,7 +13,7 @@ rm(list=ls())
 
 #wide型のdatasetを読み込む
 userdataset <- read_csv("Lesson09_long_wide/userdataset.csv")
-view(userdataset)
+print(userdataset)
 
 
 #数値の変数を文字列変数に変換
@@ -29,4 +29,4 @@ data_long <- userdataset %>%
   select(ID, servicename, date, user)
 
 
-view(data_long)
+print(data_long)

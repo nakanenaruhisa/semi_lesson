@@ -7,7 +7,7 @@
 # 作業ディレクトリの確認と固定
 getwd()
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-if (grepl("^Lesson[0-9]", basename(getwd())) || basename(getwd()) %in% c("folder_format", "applied")) setwd("..")
+setwd("..")
 
 #全部の変数を消す
 rm(list=ls())
@@ -28,15 +28,13 @@ library(car)
 
 
 #テーマのセット
+jp_font <- if (interactive()) "Hiragino Sans" else "sans"
 theme_set(theme_gray(
+  base_family = jp_font,
   base_size = 11, #文字の大きさを設定。デフォルトは11
   base_line_size = 0.2, #罫線の線の太さを設定。デフォルトはbase_size/22
   base_rect_size = 0.2 #外枠の線の太さを設定。デフォルトはbase_size/22
 ))
-
-#フォントの固定
-jp_font <- "Hiragino Sans"
-theme_set(theme_gray(base_family = jp_font, base_size = 11))
 
 #datasetを4つ読み込む
 agedper <- read_csv("Lesson12_multiple_regression1/agedper.csv")
@@ -59,12 +57,12 @@ walking_point <- walking_point %>%
 
 #datasetを統合する 
 
-view(agedper)
+print(agedper)
 
 #高齢化率データの都道府県名に入った数字を削る（4文字名から7文字目まで残す）
 agedper$pref <- str_sub(agedper$pref,start = 4,end = 7)
 
-view(agedper)
+print(agedper)
 
 #4つのデータセットを統合する
 ltc_pref <- full_join(agedper,having_job_rate, by = "prefid")
@@ -78,7 +76,7 @@ as_tibble(ltc_pref)
 ltc_pref <- ltc_pref %>%
   mutate("nintei_per" = nintei_sum/population*100) 
 
-view(ltc_pref)
+print(ltc_pref)
 
 # 必要な変数だけ抜き出す
 ltc_pref_all <- ltc_pref %>%
@@ -123,8 +121,6 @@ ggplot(data = ltc_pref_all) +
   geom_text(aes(label = pref), size = 2, vjust = 4, family = jp_font) +
   scale_colour_tableau()+
   theme_gray(base_size = 15)#grayテーマで
-
-
 
 #要介護認定率を従属変数として単回帰分析（高齢者有業率）
 reg_having_job_rate <- lm(data = ltc_pref_all, formula = nintei_per ~ having_job_rate)

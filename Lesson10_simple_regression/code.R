@@ -11,18 +11,18 @@ library(readr)
 library(tidyplots)
 library(modelsummary)
 
+theme_set(theme_gray(
+  base_family = if (interactive()) "HiraginoSans-W3" else "sans",
+  base_size = 12
+))
 
 #賃金格差と出生率のデータを読み込む
 gap_br <- read_csv("Lesson10_simple_regression/gap_br.csv")
 
 #データの内容を確認
-view(gap_br)
+print(gap_br)
 
-#賃金格差と出生率の分布を確認するためのヒストグラム
-hist(gap_br$gap)
-hist(gap_br$birthrate)
-
-#賃金格差と出生率の関係を可視化する散布図(年を表示、回帰直線なし)
+#賃金格差と出生率の関係を可視化する散布図(年を表示、回帰直線なし,ggplot2)
 ggplot(data = gap_br)+
   aes( x= gap, y = birthrate, label=year) +
   geom_point() +                  
@@ -54,33 +54,34 @@ modelsummary (gap_br_reg)
 gdp_oecd <- read_csv("Lesson10_simple_regression/gdp_oecd.csv")
 
 #データフレームの内容を確認
-view(gdp_oecd)
+print(gdp_oecd)
 
 #必要な列を選択し、列名を変更
 gdp_oecd <- gdp_oecd %>%
   select(country =`﻿LOCATION`, year = TIME, GDP = Value) 
 
-view(gdp_oecd)
+print(gdp_oecd)
 
 #日本のデータのみを抽出
 gdp_oecd_jpn <- gdp_oecd %>% 
-  filter(gdp_oecd$country == "JPN")
+  filter(country == "JPN")
 
 #日本のデータフレームの内容を確認
-view(gdp_oecd_jpn)
+print(gdp_oecd_jpn)
 
 #賃金格差・出生率データとGDPデータを結合
-gap_br_gdp <- merge(gdp_oecd_jpn, gap_br, by = "year") 
+gap_br_gdp <- gdp_oecd_jpn %>%
+  left_join(gap_br, by = "year")
 
 #結合したデータフレームを確認
-view(gap_br_gdp)
+print(gap_br_gdp)
 
 #不要な列を削除
 gap_br_gdp <- gap_br_gdp %>%
   select(-country)
 
 #削除したデータフレームを確認
-view(gap_br_gdp)
+print(gap_br_gdp)
 
 
 #分析用の変数を作成
@@ -119,5 +120,5 @@ ggplot(data = gap_br_gdp)+
   geom_text_repel(max.overlaps = 6)+
   theme_igray(base_size = 15) + 
   scale_colour_tableau()+
-  theme_igray(base_family = "HiraKakuPro-W3")
+  theme_igray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans")
 
