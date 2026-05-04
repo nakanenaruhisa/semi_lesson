@@ -29,8 +29,9 @@ library(tidyverse) # ggplot2 も含まれている
 library(ggthemes) # きれいなテーマや配色を追加
 
 #テーマのセット（日本語が文字化けしないようにする）
+# RStudio 対話時は macOS のヒラギノ、バッチ/MCP 時は sans にフォールバック
 theme_set(theme_gray(
-  base_family = "HiraginoSans-W3",
+  base_family = if (interactive()) "HiraginoSans-W3" else "sans",
   base_size = 12
 ))
 
@@ -127,11 +128,6 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point(size = 2) +
   geom_smooth(method = "lm") # lm = 直線（線形回帰）
 
-# method = "loess" にすると曲線になる
-ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
-  geom_point() +
-  geom_smooth(method = "loess")
-
 # ----- 3-3: geom_histogram() ─ ヒストグラム -----
 # 1つの連続変数の分布を見るとき
 ggplot(iris, aes(x = Sepal.Length)) +
@@ -166,7 +162,7 @@ ggplot(iris, aes(x = Species, fill = Species)) +
 # 自分で集計した値を棒グラフにするときは geom_col()
 iris_summary <- iris %>%
   group_by(Species) %>%
-  summarise(mean_sl = mean(Sepal.Length))
+  summarise(mean_sl = mean(Sepal.Length), .groups = "drop")
 
 ggplot(iris_summary, aes(x = Species, y = mean_sl, fill = Species)) +
   geom_col()
@@ -428,3 +424,4 @@ ggsave(
 # geom_errorbar()  : エラーバー（平均値の不確かさを示す）
 # geom_hline()     : 水平線
 # geom_vline()     : 垂直線
+

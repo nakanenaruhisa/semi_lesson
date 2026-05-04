@@ -92,4 +92,4 @@ df %>%
   tidyplots::tidyplot(x = family_type, y = income, color = family_type) %>%
   tidyplots::add_boxplot() %>%
   tidyplots::add_test_pvalue() %>%
-  tidyplots::adjust_size(width = 100, height = 100)
+  tidyplots::adjust_size(width = 150, height = 150)

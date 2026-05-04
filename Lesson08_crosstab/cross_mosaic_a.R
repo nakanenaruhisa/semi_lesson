@@ -12,7 +12,9 @@ library(ggmosaic)
 # 作業ディレクトリの確認
 getwd()
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-setwd("..")
+setwd(
+  "/Users/naruhisa/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R/semi_lesson"
+)
 
 #全部の変数を消す
 rm(list = ls())
