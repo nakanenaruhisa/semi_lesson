@@ -16,13 +16,14 @@ library(car)
 
 #作業ディレクトリの確認と固定
 getwd()
+setwd("")
 
 #全部の変数を消す
-rm(list=ls())
+rm(list = ls())
 
 #テーマのセット
 theme_set(theme_gray(
-  base_family = if (interactive()) "HiraKakuProN-W3" else "sans",# macOS用
+  base_family = if (interactive()) "HiraKakuProN-W3" else "sans", # macOS用
   base_size = 11, #文字の大きさを設定。デフォルトは11
   base_line_size = 0.2, #罫線の線の太さを設定。デフォルトはbase_size/22
   base_rect_size = 0.2 #外枠の線の太さを設定。デフォルトはbase_size/22
@@ -33,18 +34,61 @@ data <- read_excel("Lesson13_multiple_regression2/multireg2_dataset.xlsx")
 as_tibble(data)
 
 #カテゴリ変数の作成
-data <- data %>% 
-  mutate(oral_care_c = factor(oral_care,levels = 0:1,labels = c("未実施","実施"))) %>% 
-  mutate(gender_c = factor(gender,levels = 1:2,labels = c("男性","女性"))) %>% 
-  mutate(cohabiting_family_c = factor(cohabiting_family,levels = 0:1,labels = c("同居無","同居有")))%>%
-  mutate(housing_ownership_c = factor(housing_ownership,levels = 0:1,labels = c("賃貸","所有")))%>%
-  mutate(municipality_scale_c = factor(municipality_scale,levels = 1:3,labels = c("一般市","中核市","政令市")))%>%
-  mutate(care_level_c = factor(care_level,levels = 1:5,labels = c("要介護度1","要介護度2","要介護度3","要介護度4","要介護度5")))
+data <- data %>%
+  mutate(
+    oral_care_c = factor(oral_care, levels = 0:1, labels = c("未実施", "実施"))
+  ) %>%
+  mutate(
+    gender_c = factor(gender, levels = 1:2, labels = c("男性", "女性"))
+  ) %>%
+  mutate(
+    cohabiting_family_c = factor(
+      cohabiting_family,
+      levels = 0:1,
+      labels = c("同居無", "同居有")
+    )
+  ) %>%
+  mutate(
+    housing_ownership_c = factor(
+      housing_ownership,
+      levels = 0:1,
+      labels = c("賃貸", "所有")
+    )
+  ) %>%
+  mutate(
+    municipality_scale_c = factor(
+      municipality_scale,
+      levels = 1:3,
+      labels = c("一般市", "中核市", "政令市")
+    )
+  ) %>%
+  mutate(
+    care_level_c = factor(
+      care_level,
+      levels = 1:5,
+      labels = c(
+        "要介護度1",
+        "要介護度2",
+        "要介護度3",
+        "要介護度4",
+        "要介護度5"
+      )
+    )
+  )
 
 
 #統合したデータセットを表にする
-data <- data %>% 
-  select(discharge_days,gender_c,oral_care_c,care_level_c,cohabiting_family_c,housing_ownership_c,household_income,municipality_scale_c)
+data <- data %>%
+  select(
+    discharge_days,
+    gender_c,
+    oral_care_c,
+    care_level_c,
+    cohabiting_family_c,
+    housing_ownership_c,
+    household_income,
+    municipality_scale_c
+  )
 
 tbl_summary(data)
 
@@ -61,13 +105,13 @@ reg_care_lebel <- lm(data = data, formula = discharge_days ~ care_level_c)
 reg_care_lebel
 
 #プロットを回帰直線を入れて書いてみて
-ggplot(data = data) +     
-  aes(x = discharge_days, y = care_level_c, label = care_level_c)+
-  geom_point(color = "steelblue", alpha = 0.6) +                  # 散布図を描く
-  geom_smooth(method = "lm", color = "darkred")+  #回帰直線を描く
+ggplot(data = data) +
+  aes(x = discharge_days, y = care_level_c, label = care_level_c) +
+  geom_point(color = "steelblue", alpha = 0.6) + # 散布図を描く
+  geom_smooth(method = "lm", color = "darkred") + #回帰直線を描く
   #geom_text(aes(y = discharge_days, label = care_level_c), size = 2, vjust = 4)+
-  scale_colour_tableau()+
-  theme_grey(base_size = 15)+#grayテーマで
+  scale_colour_tableau() +
+  theme_grey(base_size = 15) + #grayテーマで
   theme_gray(base_family = if (interactive()) "HiraginoSans-W3" else "sans") + #文字化けしないおまじない
   coord_flip() # グラフを横にする
 
@@ -76,31 +120,51 @@ ggplot(data = data) +
 reg_oral_care_c <- lm(data = data, formula = discharge_days ~ oral_care_c)
 
 #プロットを書いてみて
-ggplot(data = data) +     
-  aes(x =discharge_days , y = oral_care_c, label = oral_care_c)+
-  geom_point() +                  # 散布図を描く
+ggplot(data = data) +
+  aes(x = discharge_days, y = oral_care_c, label = oral_care_c) +
+  geom_point() + # 散布図を描く
   #geom_smooth(method = "lm")+  #回帰直線を描く
   #geom_text(aes(y = discharge_days, label = oral_care_c), size = 2, vjust = 4)+
-  scale_colour_tableau()+
+  scale_colour_tableau() +
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans") #文字化けしないおまじない
 
 ##退院日数を従属変数として単回帰（世帯収入）
-reg_household_income <- lm(data = data, formula = discharge_days ~ household_income)
+reg_household_income <- lm(
+  data = data,
+  formula = discharge_days ~ household_income
+)
 
 #プロットを回帰直線を入れて書いてみて
-ggplot(data = data) +     
-  aes(x = discharge_days, y = household_income)+
-  geom_point() +                  # 散布図を描く
-  geom_smooth(method = "lm")+  #回帰直線を描く
+ggplot(data = data) +
+  aes(x = discharge_days, y = household_income) +
+  geom_point() + # 散布図を描く
+  geom_smooth(method = "lm") + #回帰直線を描く
   #geom_text(aes(y = 県民所得, label = 都道府県), size = 2, vjust = 4)+
-  scale_colour_tableau()+
+  scale_colour_tableau() +
   theme_gray(base_size = 15) + #grayテーマで
   theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans") #文字化けしないおまじない
 
 
-#重回帰分析
-gmlresult <- lm(data = data, discharge_days ~ gender_c + oral_care_c + care_level_c + household_income)
+#重回帰分析の前に標準化
+#===========================================
+# 連続変数（退院日数・世帯収入）を標準化します。
+# カテゴリ変数（gender_c, oral_care_c, care_level_c）は
+# factorとして扱うため標準化しません。
+data_std <- data %>%
+  mutate(
+    discharge_days_std = scale(discharge_days)[, 1],
+    household_income_std = scale(household_income)[, 1]
+  )
+
+#標準化した重回帰分析
+gmlresult <- lm(
+  data = data_std,
+  discharge_days_std ~ gender_c +
+    oral_care_c +
+    care_level_c +
+    household_income_std
+)
 
 # 多重共線性のチェック
 vif(gmlresult)
@@ -114,20 +178,44 @@ summary(gmlresult)
 step(gmlresult)
 
 #外すことを提案された変数を削除(今回はなし)
-gmlresult <- lm(formula = discharge_days ~ gender_c + oral_care_c + care_level_c + household_income, data = data)
+gmlresult <- lm(
+  formula = discharge_days_std ~ gender_c +
+    oral_care_c +
+    care_level_c +
+    household_income_std,
+  data = data_std
+)
 
 gmlresult <- list()
 #モデル1（口腔ケアのみ）
-gmlresult[['model_1']] <- lm(discharge_days ~ oral_care_c, data =data)
+gmlresult[['model_1']] <- lm(discharge_days_std ~ oral_care_c, data = data_std)
 #モデル2（口腔ケア＋世帯収入）
-gmlresult[['model_2']] <- lm(discharge_days ~ oral_care_c+ household_income, data =data)
+gmlresult[['model_2']] <- lm(
+  discharge_days_std ~ oral_care_c + household_income_std,
+  data = data_std
+)
 #モデル3（口腔ケア＋世帯収入+要介護度）
-gmlresult[["model_3"]] <- lm(discharge_days ~ oral_care_c+ household_income  + care_level_c , data =data)
+gmlresult[["model_3"]] <- lm(
+  discharge_days_std ~ oral_care_c + household_income_std + care_level_c,
+  data = data_std
+)
 #モデル4（口腔ケア＋世帯収入+要介護度+gender）
-gmlresult[["model_4"]] <- lm(discharge_days ~ oral_care_c + household_income  + care_level_c+ gender_c,data =data)
+gmlresult[["model_4"]] <- lm(
+  discharge_days_std ~ oral_care_c +
+    household_income_std +
+    care_level_c +
+    gender_c,
+  data = data_std
+)
 
 #回帰表テーブル
-modelsummary (gmlresult, statistic = 'conf.int', conf_level = .99, gof_omit = "AIC|BIC",stars = TRUE) # 99% 信頼区間)
+modelsummary(
+  gmlresult,
+  statistic = 'conf.int',
+  conf_level = .99,
+  gof_omit = "AIC|BIC",
+  stars = TRUE
+) # 99% 信頼区間)
 
 #回帰表テキスト
 texreg::screenreg(gmlresult)
@@ -139,44 +227,47 @@ library(broom)
 coefplot(gmlresult[["model_4"]], intercept = FALSE)
 
 #ggplot
-tidy(gmlresult[["model_4"]],conf.int = TRUE,
-     exclude_intercept = TRUE) %>%
+tidy(gmlresult[["model_4"]], conf.int = TRUE, exclude_intercept = TRUE) %>%
   ggplot() +
   geom_vline(xintercept = 0, color = "red") +
-  geom_pointrange(aes(x = estimate, xmin = conf.low, xmax = conf.high,
-                      y = term)) +
+  geom_pointrange(aes(
+    x = estimate,
+    xmin = conf.low,
+    xmax = conf.high,
+    y = term
+  )) +
   theme_gray(base_size = 12) +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank()) +
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
   labs(x = "")
 
 #ggcoef
-ggcoef(gmlresult[["model_4"]],
-       mapping = aes_string(y = "term", x = "estimate"),
-       conf.int = TRUE,
-       exclude_intercept = TRUE,
-       conf.level = 0.95,
-       exponentiate = FALSE,
-       vline = TRUE,
-       vline_color = "red",
-       vline_linetype =  "solid",
-       errorbar_color = "black",
-       errorbar_height = .15)
+ggcoef(
+  gmlresult[["model_4"]],
+  mapping = aes_string(y = "term", x = "estimate"),
+  conf.int = TRUE,
+  exclude_intercept = TRUE,
+  conf.level = 0.95,
+  exponentiate = FALSE,
+  vline = TRUE,
+  vline_color = "red",
+  vline_linetype = "solid",
+  errorbar_color = "black",
+  errorbar_height = .15
+)
 
 library(dotwhisker)
 library(jtools)
 
 dwplot(gmlresult) +
-  geom_vline(xintercept = 0,
-             colour = "grey",
-             linetype = 3) +
-  theme_bw(base_size = 15) + 
+  geom_vline(xintercept = 0, colour = "grey", linetype = 3) +
+  theme_bw(base_size = 15) +
 
-  xlab("Coefficient Estimate") + ylab("") +
+  xlab("Coefficient Estimate") +
+  ylab("") +
   theme(
     plot.title = element_text(face = "bold"),
     legend.position = c(0.007, 0.01),
     legend.justification = c(0, 0),
     legend.background = element_rect(colour = "grey80"),
-    legend.title = element_blank())
-
+    legend.title = element_blank()
+  )

@@ -45,6 +45,15 @@ dataset <- multureg2_dataset %>%
 
 print(dataset)
 
+#ロジスティック回帰の前に標準化
+#===========================================
+# 連続変数として扱うcare_levelを標準化します。
+# カテゴリ変数はfactorのまま扱います。
+dataset_std <- dataset %>%
+  mutate(
+    care_level_std = scale(care_level)[, 1]
+  )
+
 #datasetの要約表その1
 tbl_summary(dataset)
 
@@ -57,7 +66,7 @@ df <- dataset %>%
 tbl_1 <- gt(df)
 print(tbl_1)
 
-logireg <- glm(data = dataset, event ~ oral_care_c + gender_c + care_level_c + cohabiting_family,family=binomial(link="logit"),control = glm.control(maxit = 100))
+logireg <- glm(data = dataset_std, event ~ oral_care_c + gender_c + care_level_c + cohabiting_family,family=binomial(link="logit"),control = glm.control(maxit = 100))
 
 # 多重共線性のチェック
 vif(logireg)
@@ -86,16 +95,16 @@ ggplot(data = dataset) +
 # 信頼区間も同時に出すのが推奨されます。
 
 # 例：1つのモデルの場合
-logireg_single <- glm(data = dataset, event ~ oral_care_c + gender_c + care_level_c + cohabiting_family, family=binomial(link="logit"))
+logireg_single <- glm(data = dataset_std, event ~ oral_care_c + gender_c + care_level_c + cohabiting_family, family=binomial(link="logit"))
 # オッズ比
 exp(coef(logireg))
 
 
 # 複数モデルの場合、オッズ比や信頼区間付きで一括で見るなら
 logireg_list <- list()
-logireg_list[['Model 1']] <- glm(data = dataset, event ~ oral_care_c + gender_c +care_level, family=binomial(link="logit"))
-logireg_list[['Model 2']] <- glm(data = dataset, event ~ oral_care_c + gender_c +care_level + cohabiting_family, family=binomial(link="logit"))
-logireg_list[['Model 3']] <- glm(data = dataset, event ~ oral_care_c + gender_c +care_level+cohabiting_family+housing_ownership_c, family=binomial(link="logit"))
+logireg_list[['Model 1']] <- glm(data = dataset_std, event ~ oral_care_c + gender_c + care_level_std, family=binomial(link="logit"))
+logireg_list[['Model 2']] <- glm(data = dataset_std, event ~ oral_care_c + gender_c + care_level_std + cohabiting_family, family=binomial(link="logit"))
+logireg_list[['Model 3']] <- glm(data = dataset_std, event ~ oral_care_c + gender_c + care_level_std + cohabiting_family + housing_ownership_c, family=binomial(link="logit"))
 
 # modelsummaryでオッズ比（exp=TRUE）と信頼区間を表示
 modelsummary(
@@ -110,7 +119,7 @@ modelsummary(
 library(coefplot)
 
 #ggcoef
-logireg_moderl_3 <- glm(data = dataset, event ~ oral_care_c + gender_c +care_level+cohabiting_family+housing_ownership_c, family=binomial(link="logit"))
+logireg_moderl_3 <- glm(data = dataset_std, event ~ oral_care_c + gender_c + care_level_std + cohabiting_family + housing_ownership_c, family=binomial(link="logit"))
 
 ggcoef(logireg_moderl_3,
        mapping = aes_string(y = "term", x = "estimate"),

@@ -18,9 +18,7 @@ library(car)
 # 作業ディレクトリの確認
 getwd()
 # 作業フォルダを semi_lesson に合わせる（Lesson 等のサブフォルダから実行した場合のみ1つ上へ）
-setwd(
-  "/Users/naruhisa/Library/CloudStorage/OneDrive-学校法人立命館/lecture/semi/R/semi_lesson"
-)
+setwd("OneDrive-学校法人立命館/lecture/semi/R/semi_lesson")
 
 #テーマのセット
 theme_set(theme_gray(
@@ -64,6 +62,16 @@ tbl_summary(data)
 #regidencial_statusをfactor型に変換
 data$regidencial_status <- as.factor(data$regidencial_status)
 
+#ロジスティック回帰の前に標準化
+#===========================================
+# 連続変数（age, nintei_grade）を標準化します。
+# カテゴリ変数はfactorのまま扱います。
+data_std <- data %>%
+  mutate(
+    age_std = scale(age)[, 1],
+    nintei_grade_std = scale(nintei_grade)[, 1]
+  )
+
 #居住状態と年齢の単回帰のプロット書いてみて
 ggplot(data = data) +
   aes(x = age, y = regidencial_status) +
@@ -84,10 +92,10 @@ ggplot(data = data) +
 
 #居住状態を従属変数としてロジスティック回帰分析
 logireg <- glm(
-  data = data,
-  regidencial_status ~ age +
+  data = data_std,
+  regidencial_status ~ age_std +
     gender +
-    nintei_grade +
+    nintei_grade_std +
     family_status +
     public_assistance +
     public_pension,
@@ -103,25 +111,25 @@ summary(logireg)
 #居住状態を従属変数としてロジスティック回帰分析
 logireg <- list()
 logireg[['Model 1']] <- glm(
-  data = data,
-  regidencial_status ~ age + gender,
+  data = data_std,
+  regidencial_status ~ age_std + gender,
   family = binomial(link = "logit")
 )
 logireg[['Model 2']] <- glm(
-  data = data,
-  regidencial_status ~ age + gender + nintei_grade,
+  data = data_std,
+  regidencial_status ~ age_std + gender + nintei_grade_std,
   family = binomial(link = "logit")
 )
 logireg[['Model 3']] <- glm(
-  data = data,
-  regidencial_status ~ age + gender + nintei_grade + family_status,
+  data = data_std,
+  regidencial_status ~ age_std + gender + nintei_grade_std + family_status,
   family = binomial(link = "logit")
 )
 logireg[['Model 4']] <- glm(
-  data = data,
-  regidencial_status ~ age +
+  data = data_std,
+  regidencial_status ~ age_std +
     gender +
-    nintei_grade +
+    nintei_grade_std +
     family_status +
     public_assistance +
     public_pension,
@@ -143,10 +151,10 @@ library(coefplot)
 
 #ggcoef
 logireg <- glm(
-  data = data,
-  regidencial_status ~ age +
+  data = data_std,
+  regidencial_status ~ age_std +
     gender +
-    nintei_grade +
+    nintei_grade_std +
     family_status +
     public_assistance +
     public_pension,
