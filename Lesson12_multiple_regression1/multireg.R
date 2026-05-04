@@ -188,6 +188,18 @@ gml_result_std <- lm(data = ltc_pref_all_std,
 # AIC基準で最適な変数を選ぶ（標準化版）
 step(gml_result_std)
 
+# 同じ変数構成の未標準化モデル（標準化版と並べて比較するため）
+gml_result_raw <- list()
+gml_result_raw[["model_1"]] <- lm(nintei_per ~ aged_rate, data = ltc_pref_all)
+gml_result_raw[["model_2"]] <- lm(
+  nintei_per ~ aged_rate + having_job_rate,
+  data = ltc_pref_all
+)
+gml_result_raw[["model_3"]] <- lm(
+  nintei_per ~ aged_rate + having_job_rate + income_person,
+  data = ltc_pref_all
+)
+
 # 標準化されたモデルリスト
 gml_result_std <- list()
 # モデル1（高齢化率のみ、標準化）
@@ -205,6 +217,22 @@ modelsummary(gml_result_std,
              statistic = "conf.int",
              conf_level = 0.95,
              title = "標準化された重回帰分析結果")
+
+# 未標準化 vs 標準化の回帰表を並べて比較
+# （線形変換のみのため R²・調整R²・観測数は同一、係数の単位と大きさが異なる）
+modelsummary(
+  list(
+    "M1 未標準化" = gml_result_raw[["model_1"]],
+    "M1 標準化" = gml_result_std[["model_1"]],
+    "M2 未標準化" = gml_result_raw[["model_2"]],
+    "M2 標準化" = gml_result_std[["model_2"]],
+    "M3 未標準化" = gml_result_raw[["model_3"]],
+    "M3 標準化" = gml_result_std[["model_3"]]
+  ),
+  statistic = "conf.int",
+  conf_level = 0.95,
+  title = "未標準化と標準化の重回帰（同一モデル構成の比較）"
+)
 
 # 標準化された回帰表テキスト
 texreg::screenreg(gml_result_std)
