@@ -146,66 +146,47 @@ ggplot(data = data) +
   theme_gray(base_family = if (interactive()) "HiraKakuPro-W3" else "sans") #文字化けしないおまじない
 
 
-#重回帰分析の前に標準化
-#===========================================
-# 連続変数（退院日数・世帯収入）を標準化します。
-# カテゴリ変数（gender_c, oral_care_c, care_level_c）は
-# factorとして扱うため標準化しません。
-data_std <- data %>%
-  mutate(
-    discharge_days_std = scale(discharge_days)[, 1],
-    household_income_std = scale(household_income)[, 1]
-  )
+# 重回帰分析（本レッスンでは連続変数も標準化せず、元の単位のまま係数を解釈します）
+# カテゴリ変数（gender_c, oral_care_c, care_level_c 等）は factor として投入します。
 
-#標準化した重回帰分析
-gmlresult <- lm(
-  data = data_std,
-  discharge_days_std ~ gender_c +
-    oral_care_c +
-    care_level_c +
-    household_income_std
+gml_result_full <- lm(
+  data = data,
+  discharge_days ~ gender_c + oral_care_c + care_level_c + household_income
 )
 
 # 多重共線性のチェック
-vif(gmlresult)
-summary(gmlresult)
+vif(gml_result_full)
+summary(gml_result_full)
 
 ## AIC基準で最適な変数を選ぶ。モデルに影響を与えない変数を削る提案をしてくれます。
 # step()関数は、AIC（赤池情報量基準）を使って最適なモデルを選択する関数です。
-# 引数として重回帰分析の結果（gmlresult）を渡すことで、
+# 引数として重回帰分析の結果（gml_result_full）を渡すことで、
 # どの変数を削除するとAICが改善されるかを示してくれます。
 # 出力では、各ステップでのAICの値と、削除を提案する変数が表示されます。
-step(gmlresult)
+step(gml_result_full)
 
-#外すことを提案された変数を削除(今回はなし)
-gmlresult <- lm(
-  formula = discharge_days_std ~ gender_c +
-    oral_care_c +
-    care_level_c +
-    household_income_std,
-  data = data_std
-)
+# step() の提案に従い式を更新する場合は、gml_result_full の式を書き換えて再実行する。
 
 gmlresult <- list()
 #モデル1（口腔ケアのみ）
-gmlresult[['model_1']] <- lm(discharge_days_std ~ oral_care_c, data = data_std)
+gmlresult[["model_1"]] <- lm(discharge_days ~ oral_care_c, data = data)
 #モデル2（口腔ケア＋世帯収入）
-gmlresult[['model_2']] <- lm(
-  discharge_days_std ~ oral_care_c + household_income_std,
-  data = data_std
+gmlresult[["model_2"]] <- lm(
+  discharge_days ~ oral_care_c + household_income,
+  data = data
 )
 #モデル3（口腔ケア＋世帯収入+要介護度）
 gmlresult[["model_3"]] <- lm(
-  discharge_days_std ~ oral_care_c + household_income_std + care_level_c,
-  data = data_std
+  discharge_days ~ oral_care_c + household_income + care_level_c,
+  data = data
 )
 #モデル4（口腔ケア＋世帯収入+要介護度+gender）
 gmlresult[["model_4"]] <- lm(
-  discharge_days_std ~ oral_care_c +
-    household_income_std +
+  discharge_days ~ oral_care_c +
+    household_income +
     care_level_c +
     gender_c,
-  data = data_std
+  data = data
 )
 
 #回帰表テーブル
@@ -238,7 +219,10 @@ tidy(gmlresult[["model_4"]], conf.int = TRUE, exclude_intercept = TRUE) %>%
   )) +
   theme_gray(base_size = 12) +
   theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
-  labs(x = "")
+  labs(
+    x = "回帰係数（元の単位）",
+    title = "重回帰分析の係数（model_4）"
+  )
 
 #ggcoef
 ggcoef(

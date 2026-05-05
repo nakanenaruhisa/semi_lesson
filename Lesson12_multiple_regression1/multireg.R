@@ -1,6 +1,7 @@
 #このファイルは、重回帰分析を学習するためのRスクリプトです。
 #このスクリプトは、4つのデータセットを読み込み、それらを統合します
 #次に、要介護認定率を従属変数として、高齢化率、高齢者有業率、県民所得、平均歩数を独立変数として単回帰分析を行います。
+#重回帰では変数を標準化せず、元の単位のまま係数を解釈します。
 #最後に、AIC基準で最適な変数を選び、多重共線性のチェックを行います。
 
 #Rを使う下準備
@@ -160,85 +161,44 @@ ggplot(data = ltc_pref_all) +
 
 
 #ここからは変数を同時に投入する重回帰分析をしていきます。
+#本レッスンでは変数は標準化せず、元の単位のまま係数を解釈します。
 #ただし、全部の変数を入れてから、有意なもの選んで考察するのは邪道です。
 #回帰分析は仮説を立ててから、その仮説を検証するために行います。
 
+# 重回帰分析（全独立変数を同時投入）
+gml_result_full <- lm(
+  nintei_per ~ aged_rate + having_job_rate + income_person + walk_point,
+  data = ltc_pref_all
+)
 
-#重回帰分析の前に、変数を標準化します
-#===========================================
-# 標準化により、異なるスケールの変数間で係数を比較しやすくなります。
-# 標準化係数（β係数）は、独立変数が1標準偏差変化したときの
-# 従属変数の標準偏差単位での変化を示します。
+# AIC基準で最適な変数を選ぶ
+step(gml_result_full)
 
-# 標準化された変数を作成(scaleで行います)
-ltc_pref_all_std <- ltc_pref_all %>%
-  mutate(
-    nintei_per_std = scale(nintei_per)[,1],
-    aged_rate_std = scale(aged_rate)[,1],
-    having_job_rate_std = scale(having_job_rate)[,1],
-    income_person_std = scale(income_person)[,1],
-    walk_point_std = scale(walk_point)[,1]
-  )
-
-# 標準化された重回帰分析（全変数）
-gml_result_std <- lm(data = ltc_pref_all_std,
-                     nintei_per_std ~ aged_rate_std + having_job_rate_std + 
-                       income_person_std + walk_point_std)
-
-# AIC基準で最適な変数を選ぶ（標準化版）
-step(gml_result_std)
-
-# 同じ変数構成の未標準化モデル（標準化版と並べて比較するため）
-gml_result_raw <- list()
-gml_result_raw[["model_1"]] <- lm(nintei_per ~ aged_rate, data = ltc_pref_all)
-gml_result_raw[["model_2"]] <- lm(
+# 段階的に変数を足したモデルリスト
+gml_result <- list()
+gml_result[["model_1"]] <- lm(nintei_per ~ aged_rate, data = ltc_pref_all)
+gml_result[["model_2"]] <- lm(
   nintei_per ~ aged_rate + having_job_rate,
   data = ltc_pref_all
 )
-gml_result_raw[["model_3"]] <- lm(
+gml_result[["model_3"]] <- lm(
   nintei_per ~ aged_rate + having_job_rate + income_person,
   data = ltc_pref_all
 )
 
-# 標準化されたモデルリスト
-gml_result_std <- list()
-# モデル1（高齢化率のみ、標準化）
-gml_result_std[['model_1']] <- lm(nintei_per_std ~ aged_rate_std, 
-                                  data = ltc_pref_all_std)
-# モデル2（高齢化率+高齢者有業率、標準化）
-gml_result_std[['model_2']] <- lm(nintei_per_std ~ aged_rate_std + having_job_rate_std, 
-                                  data = ltc_pref_all_std)
-# モデル3（高齢化率＋高齢者有業率+県民所得、標準化）
-gml_result_std[["model_3"]] <- lm(nintei_per_std ~ aged_rate_std + having_job_rate_std + 
-                                    income_person_std, data = ltc_pref_all_std)
-
-# 標準化された回帰表テーブル
-modelsummary(gml_result_std,
-             statistic = "conf.int",
-             conf_level = 0.95,
-             title = "標準化された重回帰分析結果")
-
-# 未標準化 vs 標準化の回帰表を並べて比較
-# （線形変換のみのため R²・調整R²・観測数は同一、係数の単位と大きさが異なる）
+# 回帰表テーブル
 modelsummary(
-  list(
-    "M1 未標準化" = gml_result_raw[["model_1"]],
-    "M1 標準化" = gml_result_std[["model_1"]],
-    "M2 未標準化" = gml_result_raw[["model_2"]],
-    "M2 標準化" = gml_result_std[["model_2"]],
-    "M3 未標準化" = gml_result_raw[["model_3"]],
-    "M3 標準化" = gml_result_std[["model_3"]]
-  ),
+  gml_result,
   statistic = "conf.int",
   conf_level = 0.95,
-  title = "未標準化と標準化の重回帰（同一モデル構成の比較）"
+  title = "重回帰分析結果（未標準化）"
 )
 
-# 標準化された回帰表テキスト
-texreg::screenreg(gml_result_std)
+# 回帰表テキスト
+texreg::screenreg(gml_result)
 
-# 標準化係数の可視化（切片あり）
-tidy(gml_result_std[["model_3"]], conf.int = TRUE,
+# 回帰係数の可視化（model_3）
+tidy(gml_result[["model_3"]], conf.int = TRUE,
      exclude_intercept = TRUE) %>%
   ggplot() +
   geom_vline(xintercept = 0, color = "red") +
@@ -247,12 +207,14 @@ tidy(gml_result_std[["model_3"]], conf.int = TRUE,
   theme_gray(base_size = 12) +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank()) +
-  labs(x = "標準化係数（β）", 
-       title = "標準化された重回帰分析の係数")
+  labs(
+    x = "回帰係数（元の単位）",
+    title = "重回帰分析の係数（model_3）"
+  )
 
-# 標準化係数の可視化（ggcoef）
+# 回帰係数の可視化（ggcoef）
 ggcoef(
-  gml_result_std[["model_3"]],
+  gml_result[["model_3"]],
   mapping = aes_string(y = "term", x = "estimate"),
   conf.int = TRUE,
   exclude_intercept = TRUE,
