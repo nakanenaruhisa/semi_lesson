@@ -49,3 +49,6 @@ df_long <- df_long %>%
 
 # 変換後のデータを表示する
 print(df_long)
+
+# 使ったDatasetを保存する
+write.csv(df_long, "Lesson09_long_wide/divorce_long.csv")
